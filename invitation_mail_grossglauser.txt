@@ -1,0 +1,25 @@
+Dear Prof. Grossglauser,
+
+We are a group of four PhD students, from LTS2/EPFL supervised by Prof. Vandergheynst. We are organizing the second edition of our summer school on "Network Algorithms and Graphs" in Summer 2016 in Leukerbad, Switzerland, targeted at grad-level students.
+
+We would be delighted to welcome you as a speaker. We like your work on social networks and graph mining a lot. A couple of years ago, two of us (Lionel and Yann) have taken the "Models and Methods for Random Networks" course you gave with Prof. Thiran. It was a very interesting and enjoyable course whose subjects are a very clear fit for our summer school.
+
+Hearing more from you, first-hand, would most definitely be a valuable addition to our summer school's curriculum.
+
+In return, we can offer:
+   - to cover the travel costs to and from the hotel
+   - a nice room in the hotel including meals, etc.
+   - the nice scenery of Leukerbad, Switzerland (see
+http://goo.gl/bRcpYq) and the opportunity to relax in the hot thermal springs.
+
+We are aiming for the summer school to take place from June 27th to July 1st, 2016, but as we are very early in the organization process, there is some flexibility. If you are interested and would like to suggest dates better suited for you, you are very welcome to do so. 
+
+Our idea for the schedule is to have four speakers give some 6-hour in depth courses (split between two 3-hour sessions). The topics will be focusing on spectral graph theory, machine learning and social networks.
+
+If you are interested, let us know by email, or as you are at EPFL too, we can arrange to meet in person to discuss the summer school if you prefer.
+
+Best regards,
+
+Johan Paratte, Lionel Martin, Nathanaël Perraudin and Yann Schoenenberger (EPFL, http://lts2.epfl.ch/)
+
+P.S. You can find attached a picture taken during last year's edition. It was taken during a walk around a nearby lake.
