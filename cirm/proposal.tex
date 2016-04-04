@@ -1,0 +1,444 @@
+%\documentclass[english,onecolumn]{IEEEtran}
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}
+\usepackage{lmodern,textcomp}
+\usepackage[english]{babel}
+\usepackage[hmargin=2.5cm]{geometry}
+\usepackage[toc,page]{appendix}
+%\usepackage{times}
+%\usepackage{array}
+%\usepackage{multirow}
+\usepackage{float}
+\usepackage{url}
+%\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{caption}
+\usepackage[style=numeric,backend=biber]{biblatex} \bibliography{refs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\begin{document}
+
+\title{Graph Signal Processing Summer School}
+\subtitle{Proposal for accommodation and funding by CIRM}
+\author{
+	Michaël Defferrard \and
+	Nathanaël Perraudin \and
+	Yann Schoenenberger \and
+	Lionel Martin \and
+	Johan Paratte}
+\maketitle
+
+\begin{abstract}
+	Proposal for a Summer School on Graph Signal Processing to be held in 2018
+	at CIRM, Marseille.
+\end{abstract}
+
+\section{Summary}
+
+The proposed Summer School aims to provide PhD students and researchers with
+insights on advanced tools and methodologies in Graph Signal Processing (GSP)
+research. The goal is to disseminate state-of-the-art research about signal
+processing on graphs as well as common knowledge about the field.
+% Two levels
+There will be a set of introductory level lectures for those interested to apply
+the GSP toolbox to their research or problems as well as a set of advanced
+topics geared towards researcher in the field. The exact topics have yet to be
+discussed with potential speakers.
+
+Summer school participants will have the opportunity to learn and study
+innovative algorithms and systems in the signal processing domain, in an
+interactive and stimulating way: each day, after the lectures, the speakers will
+be available for face-to-face discussion with participants who are interested in
+deepening their knowledge of the covered material. Students will have the
+possibility to present their work to let other participants and lecturers know
+their research activity.
+
+The first edition of this school, previously named \textit{Key Insights on
+Networks and Graphs}\footnote{ \url{https://lts2.epfl.ch/summerschool/}}, was
+held in Leukerbad, Switzerland in summer 2015.
+
+\section{Résumé}
+
+La même chose en français.
+
+\section{Scientific content}
+
+% Graphs == avenir du futur
+With the advent of Big Data, an increasing amount of data is becoming available
+and advanced statistical models are developed to extract meaningful informations
+and make informed decisions from those data. Graph Signal Processing (GSP)
+enables the analysis and processing of signals who reside on irregular
+(non-Euclidean) domains, such as infrastructure or social networks. Graphs may
+further be used to incorporate external information into data models, such as
+hyperlinks or citations between documents, and to approximate the data manifold
+by constructing a similarity graph, e.g. the similarity between patches of an
+image.
+
+% Graphs
+Graphs are generic data representation forms that are useful for describing the
+geometric structures of data domains in numerous applications, including social,
+energy, transportation, sensor, and neuronal networks.
+% Weights
+The weight associated with each edge in the graph often represents the
+similarity between the two vertices it connects. The connectivities and edge
+weights are either dictated by the physics of the problem at hand or inferred
+from the data. For instance, the edge weight may be inversely proportional to
+the physical distance between nodes in the network.
+% Signals
+The data on these graphs can be visualized as a finite collection of samples,
+with one sample at each vertex in the graph. Collectively, we refer to these
+samples as a graph signal. 
+
+% GSP
+The purpose of GSP is to exploit the underlying structure to analyze, process
+and learn graph signals. Examples from the classical signal processing toolbox
+include filtering, denoising, inpainting, compressing. An important
+consideration when designing such tools is their computational complexity, which
+can often be improved by spectral relaxations or numerical approximations.
+Efficiency is key to cope with the ever growing size of datasets.
+
+% Feature vs data graph
+There exists two paradigms to model datasets using graphs: 1) constructing a
+\textit{feature graph}, where nodes represent features and samples are graph
+signals, or 2) a \textit{data graph}, where nodes represent samples and graph
+signals are functions of data. In the first case the data is transformed using
+GSP tools, while in the second case graphs are often used to regularize
+classification or regression functions.  We then identify two regimes: 1) when
+the graph structure is given by the application, and 2) when the graph has to be
+constructed from features or data.
+% math: g(L) to filter, Dirichlet regularization
+% Applications: given feature graph
+Examples of applications where a feature graph structure is given are found in
+many different engineering and science fields. In transportation networks, we
+may be interested in analyzing epidemiological data describing the spread of
+diseases, census data describing human migration patterns, or logistics data
+describing inventories of trade goods. Other examples include gene expression
+patterns defined on top of gene networks, the congestion level at the nodes of a
+telecommunication network, and patterns of brain activity defined on top of a
+brain network.
+% Applications: constructed feature graph
+% Applications: constructed data graph
+% Other examples: graph cuts
+In statistical learning problems, GSP is a meaningful paradigm even when the
+graph structure is not given by the problem but might be inferred from data.  In
+such cases, the graph is a discrete approximation of a manifold embedded in an
+Euclidean space: each node represents a sample and the weights represent
+similarities between samples. Signals on those graphs may be the output of a
+classification or regression model which we could constrain to be smooth or
+piece-wise constant on the data graph. Applications include machine vision (e.g.
+semi-local graphs between pixels) and automatic text classification.
+Graph-based methods are especially popular for the (transductive or inductive)
+semi-supervised learning problem where the objective is to classify unknown data
+with the help of a few labeled samples and a large pool of unlabeled training
+samples.
+% Applications: given data graph
+As an example of intrinsic data graph, instead of defining weights as
+similarities between vector representations of documents (from e.g. the
+bag-of-word model), external information might be incorporated by defining
+binary weights as hyperlinks or citations between documents.
+
+% Theoretical understanding
+Besides particular applications, the school will also showcase the advancement
+of the understanding of network data by redesigning traditional tools originally
+conceived to study signals defined on regular domains (such as time-varying
+signals or spatially varying images and fields) and extending them to analyze
+signals on the more complex graph domain. Examples of topics to be showcased in
+this theoretical track include graph transforms, sampling theorems, filter
+design and uncertainty principles.
+
+For a broad technical overview as well as a discussion of the challenges of GSP,
+please refer to published review papers \cite{shuman_emerging_2013,
+sandryhaila_discrete_2014, coifman_diffusion_2006, ekambaram_circulant_2013}.
+
+Potential\footnote{Their selection will depend on the speakers who will attend
+the school.} sub-topics to be discussed include:
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	% From GSP2016
+	\item Sampling and recovery of graph signals
+	\item Graph filter and filter bank design
+	\item Uncertainty principles and other fundamental limits
+	\item Graph signal transforms
+	\item Graph filter identification
+	\item Graph topology inference
+	\item Prediction and learning in graphs
+	\item Statistical graph signal processing
+	\item Signals in high-order graphs
+	\item Non-linear graph signal processing
+	\item Graph-based image and video processing
+	\item Applications to neuroscience and other medical fields
+	\item Applications to economics and social networks
+	\item Applications to infrastructure networks such as communication, transportation, power networks 
+	% Added by Michaël
+	\item Graph construction and learning
+	\item Learning graph embeddings
+	\item Machine Learning with Graph regularization
+	\item Learning with graph signals
+\end{itemize}
+
+% Relevance
+The last few years have seen significant progress in the development of theory,
+tools, and applications of GSP. This school is intended to disseminate ideas to
+a broader audience and to exchange ideas and experiences on the future path of
+this emerging field.
+As the interest grows, a summer school has been organized in 2015 in Switzerland
+and a workshop\footnote{\url{https://alliance.seas.upenn.edu/~gsp16/wiki/}} will
+take place this year in the US.
+While mainly focused on complex and dynamical networks, the \textit{Network
+Science Thematic Semester}\footnote{
+\url{https://project.inria.fr/netspringlyon/}}, comprised of two workshops and a
+conference that will take place in May and June 2016 in Lyon and Marseille,
+features some keynotes and presentations from the GSP community; notably with
+the interventions of Pierre Vandergheynst, José M.F. Moura and Alejandro
+Ribeiro.
+The IEEE Image, Video, and Multidimensional Signal Processing (IVMSP) workshop
+2016\footnote{ \url{http://www.ivmsp2016.org/}}, focused on image and video
+processing, mentions GSP and manifold modelings in its call for papers while
+Pierre Vandergheynst will give a plenary talk on signal and image processing on
+graphs.
+
+\section{Speakers}
+
+The diversity of this school is reflected in the broad range of considered
+speakers. Below is a list of potential speakers we have contacted to lecture at
+this school. As we don't know yet the date and place of the school, we didn't
+asked them to confirm their venue. We expect four or five of them to accept our
+invitation.
+
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item Pierre Vandergheynst, EPFL%: Signal processing on graphs
+	\item Mikhail Belkin%: Graphs in machine and human learning
+	\item Daniel Spielman%: Graph partitioning, sparsification
+	\item Fan Chung Graham%: Graph theory in the information age
+	\item Sergio Barbarossa
+	\item Phil Chou, Microsoft
+	\item Risi kondor
+	\item Jure Leskovec
+	\item Naoky Saito, UC Davis
+	\item Antonio Ortega
+	\item John Kleinberg
+	\item Patrick Thiran, EPFL
+	\item Matthias Grossglauser, EPFL
+	\item Pierluigi Dragotti % suggested by Mauro
+	\item Jelena Kovačević % suggested by Mauro, GSP2016
+	\item Pascal Frossard, EPFL % suggested by Mauro, GSP2016
+	\item Rémi Gribonval, INRIA, Rennes
+	\item Alain Barrat, CNRS, Marseille%: Statistical physics
+		% Benjamin peut le contacter.
+	\item \href{http://perso.ens-lyon.fr/pierre.borgnat/}{Pierre Borgnat}, ENS, Lyon
+\end{itemize}
+
+\section{Participants}
+
+This summer school targets an international audience, with a diverse set of
+speakers and potentially interested research labs. It will gather people from
+different fields using similar tools and techniques, for example from signal
+processing, graph analysis and machine learning. If the proposal is accepted, we
+will activate our networks and notify all the interested parties we know about.
+In addition to the laboratories of the potential speakers, we expect the
+students of the following groups to be interested, some of which we have
+collaborated with.
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item ENS Lyon (Pierre Borgnat)
+	\item University of southern California (Antonio Ortega) % GSP2016
+	\item INRIA Rennes (Rémi Gribonval, Nicolas Tremblay, Gilles Puy)
+	\item Carnegie Mellon University Pittsburgh (José M.F. Moura) % GSP2016
+	\item University of California, Berkeley (Kannan Ramchandran)
+	\item Télécom Bretagne (Vincent Gripon)
+	\item \href{http://www.ece.mcgill.ca/~mrabba1/}{Michael Rabbat}, McGill
+		University % GSP2016
+	\item Alejandro Ribeiro, University of Pennsylvania % GSP2016
+	\item David Shuman, Macalester College
+	\item Aliaksei Sandryhaila, Carnegie Mellon University % work with Moura
+	\item \href{http://www.inf.usi.ch/bronstein/}{Michael M. Bronstein}, USI,
+		Switzerland
+	\item \href{http://camille.roth.free.fr/index.php}{Camille Roth}, CNRS-Centre Marc Bloch, Germany
+	\item \href{http://xn.unamur.be/}{Renaud Lambiotte}, University of Namur,
+		Belgium
+	\item \href{https://web.eecs.umich.edu/~hero/}{Alfred Hero}, University of
+		Michigan
+	\item \href{http://www.epicx-lab.com/vittoria-colizza.html}{Vittoria
+		Colizza}, Inserm, France
+\end{itemize}
+
+We however do not expect more than 40 participants, the last edition attracted
+32 students, such that we propose\footnote{Actually Yannick Boursier proposed
+this solution, while helping us to put this application together.} to co-locate
+it with the \textit{Dynamique des Systèmes Biologiques} summer school, whose
+organizers anticipate around 40 participants too. As such we chose the same
+dates and will limit the number of attendees to 40, such that all participants
+from the two schools can be accommodated at CIRM. The lectures from the two
+events will take place in two different auditoriums, namely at CIRM and
+CPPM\footnote{Confirmed by Yannick Boursier.}. While the scientific part will be
+organized independently, we plan to jointly organize the social events (lunch,
+dinner, trip) during which students may exchange and eventually develop future
+collaborations.
+
+\section{Others}
+
+\subsection{Organization}
+
+This school is jointly organized by EPFL and Aix-Marseille University. The
+organizers are
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item Michaël Defferrard, PhD student, EPFL, Switzerland
+	\item Nathanaël Perraudin, PhD student, EPFL, Switzerland
+	\item Yann Schoenenberger, PhD student, EPFL, Switzerland
+\end{itemize}
+and the scientific committee is composed of
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item Pierre Vandergheynst, professor, EPFL, Switzerland
+	\item Pascal Frossard, professor, EPFL, Switzerland
+	\item Bruno Torrésani, professor, Aix-Marseille University, France
+	%\item Clothilde Mélot, maître de conférence, Aix-Marseille University, France
+\end{itemize}
+The following people are providing their help:
+\begin{itemize}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item Yannick Boursier, maître de conférence, Aix-Marseille University, France
+	\item Lionel Martin, PhD student, EPFL, Switzerland
+	\item Johan Paratte, PhD student, EPFL, Switzerland
+\end{itemize}
+
+\paragraph{Gender parity analysis.} To the best of our knowledge, Fan Chung
+Graham and Jelena Kovačević are the only women professors in the domain. As for
+the participants we cannot comment on every lab but at EPFL the gender parity is
+quite good with 20 women for 70 men in the labs of Prof. Vandergheynst,
+Frossard, Thiran and Grossglauser.
+%As we never collaborated with 
+%Then why is there no women in the committees ?
+
+\subsection{ECTS credits}
+%Should we speak about that ?
+
+We suggest to offer 2 ECTS points to Ph.D. students successfully participating
+in the school. A certificate of participation will be delivered at the end of
+the week; each university will then decide if they accept to deliver the
+credits. The students interested in earning those credits will have a final exam
+in the last day.
+
+%To that end, we would like to test the student’s comprehension of the presented topics. This will be accomplished by handing out an exercise sheet covering the topics in question. In addition to that, the exercise sheet will also award points for good suggestions where the newly learned techniques could be applied in their field of study. We believe this will give students the opportunity to lay the foundation for fruitful collaboration. The evaluation of the handed in solutions will be performed at the end of the summer school.
+
+\subsection{Location}
+
+With the idea that nice places can help open the mind, we would be delighted to
+host this event in the beautiful coastal area of Marseille. It would further be
+in contrast to the previous edition which was hosted in Leukerbad, a small swiss
+town up in a valley in the Alps. As Leukerbad, Marseille is a place which is
+quiet for the mind and relaxing for the body. 
+
+\subsection{Schedule}
+
+Each of the four speakers will be in charge of six lectures, split into one
+morning and one afternoon session, preferably on different days. We plan to
+offer an excursion on Wednesday afternoon. This leaves us with four full days
+for lectures. Table~\ref{schedule} shows the schedule of a typical day.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{rcrl}
+	 8:00 & - &  8:45 & Breakfast \\
+	 9:00 & - &  9:45 & Lesson 1 \\
+	10:00 & - & 10:45 & Lesson 2 \\
+	10:45 & - & 11:15 & Coffee break \\
+	11:15 & - & 12:00 & Lesson 3 \\
+	12:15 & - & 13:15 & Lunch \\
+	14:00 & - & 14:45 & Lesson 4 \\
+	15:00 & - & 15:45 & Lesson 5 \\
+	15:45 & - & 16:15 & Coffee break \\
+	16:15 & - & 17:00 & Lesson 6 \\
+	17:15 & - & 19:00 & Free time, discussions \\
+	20:00 &   &       &  Dinner and social events
+	\end{tabular}
+	\caption{Schedule of a typical day.}
+	\label{schedule}
+\end{table}
+
+\subsection{Dates}
+
+As this event is targeted at PhD students, who usually take courses and have
+teaching duties, as well as professors who often give lectures in their home
+university, we find it best to organize the school after the spring
+academic semester. As we aim to collocate with \textit{Dynamique des Systèmes
+Biologiques}, we jointly propose the following dates:
+\begin{enumerate}
+	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item May 15th
+	\item April 23rd
+	\item June 5th
+\end{enumerate}
+
+\subsection{Budget}
+
+The CIRM subsidizes meals and accommodations for 40 participants. As we plan to
+co-locate with another school, the CIRM would provide half of his funding to us
+while the other half will go to the other event. This will thus cover 20
+participants.
+
+We plan to invite five speakers, three of which will come from Europe and two
+from the US. We estimate the travel expenses to be around 800€ from Europe and
+2000€ from the US.
+
+If this proposal is accepted, we will request additional funding to local
+communities in the CIRM area\footnote{Coordinated by Yannick Boursier.} and to
+the Seasonal Schools in Signal Processing (S3P) Program\footnote{
+\url{http://www.signalprocessingsociety.org/community/seasonal-schools/}}
+of the IEEE Signal Processing Society (SPS). While there is no call for
+proposals for 2018 yet, the winter 2016-2017 version states that ``an SPS
+contribution of up to 5k US dollars can be included in the budget''.
+
+To cover additional expenses and to incentivize participants to be 'active', we
+further ask for a registration fee of 200€ per PhD student (400€ for
+post-doctoral researchers and 800€ for non-academic).
+
+A detailed budget can be found in tables~\ref{tab:expenditures} and
+\ref{tab:revenues}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|r|r|r|}
+	\hline
+	Description & Amount (EUR) & Quantity & Expenditures (EUR) \\
+	\hline
+	Food and accommodation (participants) & $88.5\cdot5=442.50$ & 40 & 17'700 \\
+	Food and accommodation (speakers) & 800 & 5 & 4'000 \\
+	Travel costs for EU speaker & 800  & 3 & 2'400 \\
+	Travel costs for US speaker & 2000 & 2 & 4'000 \\
+	Excursion & 30 & 44 & 1'320 \\
+	Miscellaneous & 1500 & 1 & 1'500 \\
+	\hline
+	\multicolumn{3}{|l|}{\textbf{Total}} & \textbf{30'920} \\
+	\hline
+	\end{tabular}
+	\caption{Budgeted expenditures.}
+	\label{tab:expenditures}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|r|r|r|}
+	\hline
+	Description & Amount (EUR) & Quantity & Revenues (EUR) \\
+	\hline
+	CIRM subsidies & $88.5 \cdot 5$ = 442.50 & 20 & 8'850 \\
+	IEEE SPS contribution & 5000 & 1 & 5'000 \\
+	Local sponsoring & 9000  & 1 & 9'000 \\
+	Registration fees & 200 & 40 & 8'000 \\
+	\hline
+	\multicolumn{3}{|l|}{\textbf{Total}} & \textbf{30'850} \\
+	\hline
+	\end{tabular}
+	\caption{Budgeted revenues.}
+	\label{tab:revenues}
+\end{table}
+
+\printbibliography
+
+\end{document}
