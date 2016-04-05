@@ -4,7 +4,7 @@ PDF = $(SRC:.tex=.pdf)
 all: $(PDF)
   
 %.pdf: %.tex refs.bib
-	@latexmk $<
+	latexmk -pdf $<
 
 clean:
 	rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,out}
