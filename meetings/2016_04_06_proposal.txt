@@ -1,0 +1,82 @@
+Discussion plénière
+* Choisir et ordonner les speakers.
+	* Autres speakers européens (industrie) ? Demander à Pierre ?
+	* À inviter: Pierre, Ulrike, Spielman, Mauro, Jure
+	* Formulation: we contacted, confirmation pending.
+	* Johan: aucune chance d'avoir une réponse de tous d'ici dimanche.
+	* On peut ordonner les viennes-ensuites plus tard.
+* Budget: food & accomodation speakers.
+	* Chambre individuelle est 10€ de plus.
+	* We provide Individuelle au CIRM. You can organize yourself, we will give
+	  you a compensation if you organize by yourself.
+	* Inviter leur femme / famille ?
+		* Johan: c'est leur problème.
+		* Pascal / Yannick en pense quoi ? Est-ce que ça se fait en général ?
+	* En parler dans le budget.
+* Nombre de crédits ?
+	* Johan / Nath: 1 est trop peu, ridicule.
+	* On délivre uniquement une attestation de présence à la fin de l'école.
+	* Au choix des universités de les accepter.
+	* Pas d'examens.
+	* On estime à 2 crédits la quantité de travail à fournir.
+* Frais d'inscription différenciés ?
+	* Johan: unifier PhD / postdoc. L'industrie finance l'académie.
+	* Différencier académique et non-académique.
+	* Johan: il trouve 200€ trop peu.
+		* Demander à Yannick si on a de la marge dans les frais d'inscriptions.
+* Fille dans le comité d'organisation.
+	* Clothilde ? On ne la relance pas nous-même.
+	* Yannick: pas de réponse de Clothilde, on devrait la relancer ?
+	* Pascal: ça intéresserait une fille de ton lab ? Voir avec Dorina.
+* Schedule
+	* Michaël: commencer lundi midi ? Pour laisser le temps aux participants de
+	  s'installer.
+	* Johan: commencer lundi matin et les gens s'installent dimanche.
+	* Faire arriver les gens dimanches, on commence lundi matin.
+	* Vendredi: pas de nuit, terminer plus tôt.
+	* Johan: laisser un temps de pause dans l'après-midi, cours de 15h à 18h. Ce
+	  temps sera utilisé pour discussions.
+	* Johan: 18h30 à 19h30 for 2-3 student presentations
+* Remerciement Mauro, év. speaker ? En tout cas comité.
+
+
+Discussion Xavier
+* Liste speakers trop américaine
+	* Demander à Pierre / Pascal
+* Aussi des gens un peu hors du sujet (plutôt pour un workshop)
+* Le premier speaker doit introduire le sujet et vulgariser
+* Mixer théorie et applications
+* Access to location should be easy for US speakers
+	* Marseille is nice: Paris and Riviera
+* Mauro comité scientifique
+* Speaker: Ronald R. Coifman
+
+
+Discussion Nathanaël
+* Fait une liste de références récentes
+* Speaker: Ulrike von Luxburg (spectral clustering)
+* Plusieurs catégories de speakers.
+	1. Introduction au domaine
+	2. Résultats fondateurs et importants: pourquoi GSP fait sens ?
+	3. Applications
+* Participation active: short presentations ou poster sessions
+* Speakers français: Mallat (bon speaker), Candès ?
+	* Optim: Combettes, Pesquet, Bach
+	* Demander à Pierre: Abderrahim Elmoataz, Pesquet ou Mallat
+
+
+Discussion Pascal
+* Speakers français
+	* Lyon: Flandrin, Borgnat
+	* Facebook ou Yahoo ?
+	* Optim: Fadili, Pesquet
+	* GSP: Elmoataz
+
+
+Todo
+* Liste participants & speakers.
+	* Lien vers leur site.
+	* Format consistant.
+* We thank the following people advices and proof-reading of the proposal.
+* Si Mauro, not a collab between Marseille and EPFL anymore.
+* Qualité (pas exhaustif, récent) des références: Benjamin / Xavier
