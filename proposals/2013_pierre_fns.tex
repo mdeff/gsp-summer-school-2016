@@ -1,0 +1,735 @@
+%\documentclass[11pt,draftcls,onecolumn,oneside]{IEEEtran}
+%\documentclass[journal]{IEEEtran} 
+\documentclass{article}
+\usepackage{amsmath,amssymb,epsfig,graphicx,url,color,bbm}
+\usepackage[ruled,vlined]{algorithm2e}
+%\usepackage{pgfgantt}
+\usepackage{cite}
+%\usepackage{graphicx}
+\usepackage{multirow}
+%\usepackage{color}
+\usepackage{subfigure}
+%\usepackage{url}
+%\usepackage{stfloats}
+%\usepackage{amsmath}
+
+%\interdisplaylinepenalty=2500
+%\usepackage{array}
+%\usepackage{epsfig}
+%\usepackage{amsfonts}
+%\usepackage[psamsfonts]{amssymb}
+%\usepackage{amsxtra}
+%\usepackage{threeparttable}
+%\usepackage{tabularx}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{fullpage}
+
+% Example definitions.
+% --------------------
+\newtheorem{theorem}{\textbf{Theorem}}
+\newtheorem{Featured}{\textbf{Featured Theorem}}%\theoremstyle{break}
+\newtheorem{definition}{\textbf{Definition}}
+\newtheorem{problem}{\textbf{Problem}}
+\newtheorem{example}{\textbf{Example}}
+\newtheorem{lemma}{\textbf{Lemma}}
+\newtheorem{corollary}{\textbf{Corollary}}
+\newtheorem{proposition}{\textbf{Proposition}}
+\newtheorem{rem}{Remark}
+
+\newcommand{\sinc}{{\rm sinc}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\prox}{{\rm prox}}
+\newcommand{\Id}{{\rm Id}}
+\renewcommand{\L}{{\mathcal{L}}}
+\newcommand{\sq}{\vspace{-1mm}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\l}{\ell}
+
+
+%\def\argmax{\mathop{\rm arg\,max}}
+\def\argmin{\mathop{\rm arg\,min}}
+
+
+\def\muin{{\mu_{in}}}
+\def\muout{{\mu_{out}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\xinf}{\|x\|_\infty}
+
+\newcommand{\Ltwo}{L^2 (\mathbb{R})}
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\gr}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\|{#1}\|}
+\DeclareMathOperator{\nint}{nint}
+
+\begin{document}
+%
+% paper title
+\title{Towards Signal Processing on Graphs}
+
+
+\maketitle              % typeset the title of the contribution
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setcounter{section}{1}
+\section{Summary}
+
+\label{sec:intro}
+Many modern problems involve solving computational problems on large scale datasets. 
+In recent years, it has become common to model the relationships between data points -- the geometry of a data set -- via very large graphs. A graph is a fundamental, and therefore well-studied, mathematical structure to represent collections of abstract objects connected by links. The strength of graphs is that objects can be anything and their links, edges in the graphs, can represent virtually any notion of affinity or distance. Recently, the prevalence of graphs in data driven science  has been fuelled up by algorithmic and software engineering progresses, such as the availability of efficient graph databases and graph-based computational abstractions.  Manipulating data on such structures in an efficient way and with principled approaches offering performance guarantees is therefore key to reaping the benefits of Big Data. 
+
+In this project, we propose to lay the foundations for a generalisation of signal processing to data defined on large graphs. Our approach is based on using spectral graph theory, the spectral theory of the graph Laplacian, to revisit computational harmonic analysis on graphs. In particular, we will revisit the fundamental aspects of signal processing via a new definition of localised filtering on graphs. We will study the fundamental limits of the new theory and seek  to revitalise the link between signal processing and learning theory via new interpolation and regularisation frameworks based on generalised notions of sparsity and smoothness for data on graphs. We will explore the asymptotics of these frameworks towards manifold-supported distributions. Finally, we will leverage recent computational abstractions and frameworks to design efficient algorithms that scale up to very large graphs.
+
+The corpus of our results will pave the way towards efficiently analysing and processing datasets, in very much the same way we process signals and images today, thereby opening new computational avenues for data driven science and technology.
+
+\section{State of the Art}
+\subsection{Spectral Graph Theory}
+
+A weighted graph $\G = \{E,V,w\}$ consists of a set of vertices $V$, a
+set of edges $E$, and a weight function $w:E\to\mathbb{R}^+$ which assigns a
+positive weight to each edge. We consider here only finite graphs
+where $|V| = N <\infty$.  The adjacency matrix $A$ for a weighted
+graph $\G$ is the $N\times N$ matrix with entries $a_{m,n}$ where
+\begin{equation}
+a_{m,n} = 
+\begin{cases}
+w(e) \mbox{ if $e\in E$ connects vertices $m$ and $n$} \\
+0 \mbox{ otherwise}
+\end{cases}
+\end{equation}
+In this proposal, we first consider undirected graphs, which
+correspond to symmetric adjacency matrices. We do not consider the
+possibility of negative weights.
+The degree of each vertex is the sum of the weights of all the edges incident
+to it. We define the degree matrix $D$
+to have diagonal elements equal to the degrees, and zeros elsewhere.
+We will also write $f\in \mathbb{R}^N$,
+a function on the vertices of the graph, and $f(m)$ for the value
+on the $m^{th}$ vertex.
+
+The non-normalized Laplacian is defined as $\L=D-A$. It can be
+verified that for any $f\in \mathbb{R}^N$, $\L$ satisfies
+\begin{equation}
+(\L f)(m) = \sum_{m\sim n} a_{m,n} \cdot ( f(m) - f(n)),
+\end{equation}
+where the sum over $m\sim n$ indicates summation over all vertices $n$
+that are connected to the vertex $m$, and $a_{m,n}$ denotes the weight
+of the edge connecting $m$ and $n$. For a graph arising from a regular mesh, the graph Laplacian
+corresponds to the standard stencil approximation of the continuous Laplacian, intuitively justifying this terminology. Note that there exist several slightly different definitions, but most of them will still fit the framework defined here. 
+
+As the graph Laplacian $\L$ is a real symmetric
+matrix, it has a complete set of orthonormal eigenvectors. We denote
+these by $\chi_{\l}$ for $\l=0, \hdots ,N-1$, with associated eigenvalues
+$\lambda_{\l}$
+\begin{equation}
+\L \chi_{\l} = \lambda_{\l} \chi_{\l}.
+\end{equation}
+As $\L$ is symmetric, each of the $\lambda_{\l}$ are real. For the graph
+Laplacian, it can be shown that the eigenvalues are all non-negative,
+and that $0$ appears as an eigenvalue with multiplicity equal to the
+number of connected components of the graph
+\cite{chung}. 
+%
+% \n{ perhaps include proof of this, and that the constant vector is an
+%   eigenvector for non-normalized Laplacian}
+%
+Henceforth, we assume the graph $\G$ to be
+connected, we may thus order the eigenvalues such that
+\begin{equation}
+0=\lambda_0 < \lambda_1 \leq \lambda_2 ... \leq \lambda_{N-1}
+\end{equation}
+
+For any function $f\in\mathbb{R}^{N}$ defined on the vertices of $\G$, its
+graph Fourier transform $\hat{f}$ is defined by
+\begin{equation}
+\hat{f}(\l) = \langle \chi_{\l},f\rangle = \sum_{n=1}^N \chi^*_{\l}(n) f(n) .
+\end{equation}
+where we adopt the convention that the inner product be
+  conjugate-linear in the first argument. The inverse transform reads
+as
+\begin{equation}
+f(n) = \sum_{\l=0}^{N-1} \hat{f}(\l) \chi_{\l}(n).
+\end{equation}
+
+\subsection{Spectral Graph Wavelets}
+
+The spectral graph wavelet transform, introduced recently in \cite{sgwt}, is generated by wavelet operators that are operator-valued functions of the Laplacian. Let us summarize the main steps of this construction. The transform is determined
+by the choice of a kernel function $g : \mathbb{R}^+ \to \mathbb{R}^+$, which is
+analogous to the Fourier transform of a wavelet in the classical setting. This kernel $g$ should behave as a band-pass filter, i.e. it satisfies $g(0)=0$ and $\lim_{x\to\infty} g(x)=0$. The wavelet operator $T_g = g(\L)$ is defined through its action on a given function $f$ as~:
+\begin{equation}
+\widehat{T_g f}(\l) = g(\lambda_{\l}) \hat{f}(\l).
+\end{equation}
+
+
+The wavelet operators at scale $t$ is then defined by $T_g^t =
+g(t\L)$. It should be emphasized that even though the ``spatial
+domain'' for the graph is discrete, the domain of the kernel $g$ is
+continuous and thus the scaling may be defined for any positive real number
+$t$. 
+
+The spectral graph wavelets are then realized through localizing these
+operators by applying them to the impulse on a single vertex, i.e.
+\begin{equation}
+\psi_{t,n} = T^t_g \delta_n .
+\end{equation}
+Expanding this explicitly in the graph domain shows
+\begin{equation} \label{eq:psi_fourier_exp}
+\psi_{t,n}(m) = \sum_{\l=0}^{N-1} g(t\lambda_{\l}) \chi_{\l}^*(n)\chi_{\l}(m) .
+\end{equation}
+
+Formally, the wavelet coefficients of a given function $f$ are
+produced by taking the inner product with these wavelets, as
+\begin{eqnarray*}
+W_f(t,n) & = & \langle\psi_{t,n},f \rangle \\
+&  = & \left(T_g^tf \right) (n) \\
+& = & \sum_{\l=0}^{N-1}
+g(t\lambda_{\l})\hat{f}(\l)\chi_{\l}(n).
+\end{eqnarray*}
+
+It is convenient to introduce a second class of waveforms, analogous to
+the lowpass residual scaling functions from classical wavelet
+analysis. They are determined
+by a single real valued function $h:\mathbb{R}^+\to\mathbb{R}$, which acts as a
+lowpass filter, and satisfies $h(0)>0$ and $h(x)\to 0$ as $x\to
+\infty$. By properly discretizing the scale variable, one obtains frame of spectral graph wavelets. More precisely, the lower and upper frame bounds, $A$ and $B$ are given by~:
+$$
+A = \min_{\lambda\in[0,\lambda_{N-1}]} G(\lambda) , \,
+    B = \max_{\lambda\in[0,\lambda_{N-1}]} G(\lambda)
+$$
+where $G(\lambda)=h^2(\lambda)+\sum_j g(t_j \lambda)^2$.
+
+An important property of spectral graph wavelets is that their localization at small scales is guaranteed by simple constrains on the kernel $g$. This property ensures that graph wavelets behave like discrete multiscale differential operators on graphs and thus can sparsely approximate piecewise smooth signals. A precise mathematical formulation of the links between smoothness on graphs and sparsity in graph wavelet frames will be one of the topics covered by this proposal.
+
+
+\subsection{Towards Signal Processing on Graphs}
+
+% convolution and filters, remind interpretation via Bessel filter example
+For signals $f,g \in L^2(\Rbb)$, the classical convolution product $h=f \ast g$ 
+is defined as
+\begin{align} \label{Eq:conv_class}
+h(t)=(f \ast g)(t):=\int_{\Rbb} f(\tau)g(t-\tau)d\tau.
+\end{align}
+Since the simple translation $g(t-\tau)$ cannot be directly extended to the graph setting, we cannot directly generalize \eqref{Eq:conv_class}. However, the classical convolution product also 
+satisfies
+\begin{align}\label{Eq:conv}
+h(t)=(f \ast g)(t)=\int_{\Rbb}\hat{h}(k)\psi_k(t) dk %\nonumber \\
+%&\hspace{1.5in}
+= \int_{\Rbb}\hat{f}(k)\hat{g}(k)\psi_k(t) dk,
+\end{align}
+where $\psi_k(t)=e^{2\pi i k t}$. This important property that convolution in the time domain is equivalent to multiplication in the Fourier domain is the notion we generalize instead. Specifically, by replacing the complex exponentials in \eqref{Eq:conv} with the graph Laplacian eigenvectors, we define a \emph{generalized convolution} of signals $f,g \in \Rbb^N$ on a graph by
+\begin{align}\label{Eq:gen_convolution}
+(f \ast g)(n):=\sum_{\l=0}^{N-1} \hat{f}(\l)\hat{g}({\l}) \chi_{\l}(n).
+\end{align}
+\begin{proposition} \label{Prop:conv_prop}
+The generalized convolution product defined in \eqref{Eq:gen_convolution}
+satisfies the following properties:
+\begin{enumerate}
+\item Generalized convolution in the vertex domain is multiplication in the graph spectral domain:
+\begin{align}\label{Eq:conv_thm}
+\widehat{f \ast g} = \hat{f} \hat{g}.
+\end{align}
+\item Let $\alpha \in \Rbb$ be arbitrary. Then
+\begin{align}\label{Eq:scalar_mult}
+\alpha (f \ast g) = (\alpha f) \ast g = f \ast (\alpha g).
+\end{align}
+\item Commutativity:
+\begin{align}\label{Eq:commutativity}
+f \ast g = g \ast f.
+\end{align}
+\item Distributivity:
+\begin{align}\label{Eq:distributivity}
+f \ast (g+h) = f \ast g + f \ast h.
+\end{align}
+\item Associativity:
+\begin{align}\label{Eq:associativity}
+(f \ast g) \ast h = f \ast (g \ast h).
+\end{align}
+\item Define a function $g_0 \in \Rbb^N$ by $g_0(n):=\sum_{\l=0}^{N-1} \chi_{\l}(n)$. Then $g_0$ is an identity for the generalized convolution product:
+\begin{align} \label{Eq:identity}
+f \ast g_0 = f.
+\end{align}
+\item An invariance property with respect to the graph Laplacian (a difference operator):
+\begin{align}\label{Eq:diff_op}
+\L (f \ast g) = (\L f) \ast g = f \ast (\L g).
+\end{align}
+\item The sum of the generalized convolution product of two signals is a constant times the product of the sums of the two signals:
+\begin{align}\label{Eq:integration}
+\sum_{n=1}^N (f \ast g)(n) = \frac{1}{\sqrt{N}}\left[\sum_{n=1}^N f(n) \right] \left[\sum_{n=1}^N g(n) \right] = \sqrt{N} \hat{f}(0)\hat{g}(0).
+\end{align}
+\end{enumerate}
+\end{proposition}
+
+
+Now the application of the classical translation operator $T_u$ 
+to a function $f \in L^2(\Rbb)$ can be seen as a convolution with $\delta_u$:
+\begin{align*}
+(T_u f)(t):=f(t-u)=(f \ast \delta_u)(t) %\nonumber \\
+%&
+\stackrel{\eqref{Eq:conv}}= \int_{\Rbb}\hat{f}(k)\widehat{\delta_u}(k)\psi_k(t) dk %\nonumber \\
+%&
+= \int_{\Rbb}\hat{f}(k){\psi}^*_k(u)\psi_k(t) dk,
+\end{align*}
+where the equalities are in the weak sense.
+Thus, for any signal $f \in \Rbb^N$ defined on the %vertices of 
+the graph $\G$ and any $i \in \{1,2,\ldots,N\}$, we also define a \emph{generalized translation operator} $T_{i}: \Rbb^N \rightarrow \Rbb^N$ via generalized convolution with a delta centered at vertex $i$:
+%\vspace{-.1cm}
+\begin{equation} \label{Eq:new_translation}
+\left(T_i f\right)(n):= \sqrt{N}(f \ast \delta_i)(n) \stackrel{\eqref{Eq:gen_convolution}}= %\left(f(\L)\delta_i\right)(n)=
+\sqrt{N}\sum_{\l=0}^{N-1}\hat{f}(\l)\chi_{\l}^*(i)\chi_{\l}(n).
+\end{equation}
+%To see that \eqref{Eq:new_translation} is in fact a generalized translation operator, we can replace the Laplacian eigenvectors by their continuous counterpart, the complex exponentials, and the discrete summation by an integral to recover the classical translation operator \eqref{Eq:classical_translation}. Also note that $T_i=K_{\delta_i}$, where for any two signals $f$ and $g$ on a graph, the convolution operator $K$ is defined as %in 
+%%Lastly, we define a convolution of two signals $f$ and $g$ on a graph by
+%%For a kernel $\hat{g}: \Rbb \rightarrow \Rbb$, they define the convolution operator $K_g$ by
+%\begin{align*} %\label{Eq:convolution}
+%(K_{{g}} f)(n):=\sum_{\l=0}^{N-1} \hat{g}({\l}) \hat{f}(\l)\chi_{\l}(n);
+%\end{align*}
+%%\eqref{Eq:convolution}; %and $\delta_i$ is a signal with value 1 at vertex $i$ and 0 at all other vertices; 
+%that is, the generalized translation by $i$ is a convolution with a delta centered at vertex $i$. 
+%%where $\hat{f}(\l)=\ip{\chi_{\l}}{f}=\sum_{m=1}^N \chi_{\l}(m)f(m)$ is the graph Fourier transform of $f$.
+%**
+The translation \eqref{Eq:new_translation} is a kernelized operator. The window to be shifted around the graph is defined in the graph spectral domain via the kernel or filter $\hat{f}(\cdot)$. To translate this window to vertex $i$, the $\l^{th}$ component of the kernel is multiplied by $\chi_{\l}^*(i)$, and then an inverse graph Fourier transform is applied. 
+%{\color{red} *** kerenelized operator, Think of translating the window around the graph - use heat kernel ***}
+As an example, in Figure \ref{Fig:trans}, we apply generalized translation operators to 
+the %graph signal 
+normalized heat kernel. We can see that doing so has the desired effect of shifting a window around the graph, centering it at any given vertex $i$.
+\begin{figure}[htbp]
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[scale=0.25]{./Figures/fig5a_trans1.pdf} &
+\includegraphics[scale=0.25]{./Figures/fig5b_trans2.pdf} &
+\includegraphics[scale=0.25]{./Figures/fig5c_trans3.pdf}
+\end{tabular}
+\caption{\label{Fig:trans}Translation operator applied to the heat kernel of the Minnessota graph. The resulting window is sharply localised around the target vertex.}
+%\label{default}
+\end{center}
+\end{figure}
+
+Some expected properties of the generalized translation operator follow immediately from the generalized convolution properties of Proposition \ref{Prop:conv_prop}.
+\begin{corollary}
+For any $f, g \in \Rbb^N$ and $i, j \in \{1,2,\ldots,N\}$,
+\begin{enumerate}
+\item $T_i(f \ast g) = (T_i f) \ast g = f \ast (T_i g)$.
+\item $T_i T_j f = T_j T_i f$.
+\item $\sum_n (T_i f)(n)= \sqrt{N}\hat{f}(0)=\sum_n f(n)$.
+\end{enumerate}
+\end{corollary}
+However, the niceties end there, and we should also point out some properties that are true for the classical translation operator, but not for the generalized translation operator for signals on graphs. First, unlike the classical case, the set of translation operators $\{T_i\}_{i\in \{1,2,\ldots,N\}}$ do not form a mathematical group; i.e., $T_i T_j \neq T_{i+j}$. In the very special case of the unweighted ring graph, we have
+\begin{align} \label{Eq:ring_per}
+T_i T_j = T_{\left[\bigl((i-1)+(j-1)\bigr) \hbox{ mod } N \right] +1},~\forall i,j \in \{1,2,\ldots,N\}.
+\end{align}
+However, \eqref{Eq:ring_per} is not true in general for arbitrary graphs. Moreover, while the idea of successive translations $T_i T_j$ carries a clear meaning in the classical case, it is not a particularly meaningful concept in the graph setting due to our definition of generalized translation as a kernelized operator.
+
+Second, unlike the classical translation operator, the generalized translation operator is not an isometric operator; i.e., $\|{T_i f}\|_2 \neq \|{f}\|_2$ for all indices $i$ and signals $f$. Rather, we have
+\begin{lemma}\label{Le:trans_norm_bounds}
+For any $f\in \Rbb^N$,
+\begin{align}\label{Eq:trans_norm_bounds}
+|\hat{f}(0)| \leq \|{T_i f}\|_2 \leq \sqrt{N}\tilde{\mu}_i \|{f}\|_2 \leq \sqrt{N} \mu \|{f}\|_2.
+\end{align}
+\end{lemma}
+
+%\begin{align} \label{Eq:trans_operator_1}
+%\norm{T_i f}_2^2 &= \sum_{n=1}^N \left(\sqrt{N}\sum_{\l=0}^{N-1} \hat{f}(\l) \chi_{\l}^*(i) \chi_{\l}(n) \right)^2 \nonumber \\
+%&=N \sum_{\l=0}^{N-1} \sum_{\l^{\prime}=0}^{N-1} \hat{f}(\l) \hat{f}(\l^{\prime}) \chi_{\l}^*(i) \chi_{\l^{\prime}}^*(i) \sum_{n=1}^N  \chi_{\l}(n) \chi_{\l^{\prime}}(n) \nonumber \\
+%&= N \sum_{\l=0}^{N-1} |\hat{f}(\l)|^2 \left|\chi_{\l}^*(i) \right|^2 \\
+%& \leq N \tilde{\mu}_i^2 \norm{f}_2^2. \label{Eq:trans_operator_2}
+%\end{align}
+%Substituting $\chi_{0}(i)=\frac{1}{\sqrt{N}}$ into \eqref{Eq:trans_operator_1} yields the first inequality in \eqref{Eq:trans_norm_bounds}.
+%\end{proof}
+%\noindent If $\mu=\frac{1}{\sqrt{N}}$, as is the case for the ring graph with the DFT graph Laplacian eigenvectors, then $|\chi_{\l}^*(i)|^2=\frac{1}{N}$ for all $i$ and $\l$, and \eqref{Eq:trans_operator_1} becomes $\norm{T_i f}_2=\norm{f}_2$. However, for general graphs, 
+$|\chi_{\l}^*(i)|$ may be small or even zero for some $i$ and $\l$, and thus $\norm{T_i f}_2$ may be significantly smaller than $\norm{f}_2$, and in fact may even be zero. Meanwhile, if $\mu$ is close to 1, then we may also have the case that $\norm{T_i f}_2 \approx \sqrt{N} \norm{f}_2$. 
+
+These preliminary results hint at important similitudes and differences with classical Digital Signal Processing. The cornerstone of this emerging corpus is the graph convolution which, with appropriate filters, outlines an important class of linear operators on graphs. These structures are fully compatible with the spectral decomposition of the Laplacian. On the other hand the lack of any specific structure on $\G$ results in the loss of translation invariance. However, properties of $\G$ clearly influence the shift operator as shown in Lemma~\ref{Le:trans_norm_bounds}. A full understanding of this proposed theory of signal processing on graphs, at the mathematical and computational levels, is the main goal of this project.
+
+ \subsection{Related approaches}
+
+Even though setting up a generalised theory of signal processing on graphs is a fairly new idea, there has been several approaches that implement multiresolution, or wavelet-like transform, for graph data. For example, Crovella and Kolaczyk \cite{Crovella:2003vu} defined wavelets on unweighted graphs
+for analyzing computer network traffic.  Their construction was based
+on the n-hop distance, such that the value of a wavelet centered at a
+vertex $n$ on vertex $m$ depended only on the shortest-path distance
+between $m$ and $n$. However, they did not study the invertibility or frame properties of their transform.
+Coifman and Gavish have proposed a tree-like construction of wavelets on graphs that easily yields an orthonormal basis. However their scheme involved partitioning the graph into a balanced tree and the authors did not provide a universal algorithm to do so. The closest construction is the "diffusion wavelet" transform of Coifman an Maggioni~\cite{diffusion_wavelets}. Their construction interacts with
+the underlying graph through repeated applications
+of a diffusion operator $T$, analogously to how our construction is
+parametrized by the choice of the graph Laplacian $\L$.  The largest
+difference between their work and ours is that the diffusion wavelets
+are designed to be orthonormal. This is achieved by running a
+localized orthogonalization procedure after applying dyadic powers of
+$T$ at each scale to yield nested approximation spaces, wavelets are
+then produced by locally orthogonalizing vectors spanning the
+difference of these approximation spaces.  While an orthogonal
+transform is desirable for many applications, notably operator and
+signal compression, the use of the orthogonalization procedure
+complicates the construction of the transform, and somewhat obscures
+the relation between the diffusion operator $T$ and the resulting
+wavelets.
+
+Finally there exist a wide range of interesting techniques for  graph coarsening that can be used for implementing multi resolution on graphs.
+To mention just a few, Lafon and Lee \cite{lafon_coarse} downsample based on \emph{diffusion distances} and form new edge weights based on random walk transition probabilities; the greedy \emph{seed selection} algorithm of Ron et al. \cite{ron} leverages an \emph{algebraic distance} measure to downsample the vertices; recursive spectral bisection \cite{barnard} repeatedly divides the graph into parts according to the polarity (signs) of the Fiedler vectors $\mathbf{u}_1$ of successive subgraphs; Narang and Ortega \cite{narang_lifting_graphs} minimize the number of edges connecting two vertices in the same downsampled subset; and another generally-applicable method which yields the natural downsampling on bipartite graphs (\cite[Chapter 3.6]{lap_eigen}) is to partition $V$ into two subsets according to the polarity of the components of the graph Laplacian eigenvector $\mathbf{u}_{N-1}$ associated with the largest eigenvalue $\lambda_{\max}$.  We refer readers to \cite{ron,gp_archive} and references therein for more thorough reviews of the graph coarsening literature. 
+
+\section{Earlier contributions to the state-of-the-art by the project investigator}
+%introduced spectral graph wavelets, used them for transductive learning, SPM review.
+The Principal Investigator, Prof. Pierre Vandergheynst, introduced Spectral Graph Wavelets in~\cite{sgwt} (see also the upcoming review paper~\cite{Shuman:2012wh}).  Among other applications, Prof. Vandergheynst discussed transductive learning with graph wavelets in~\cite{Shuman:2011tp}. He has also further studied distributed computational aspects of graph filtering in~\cite{shuman_DCOSS_2011}.  
+
+
+\subsection{Research expertise of the research applicant}
+
+Pierre Vandergheynst received the M.S. degree in physics and the Ph.D. degree in mathematical physics from the UniversitŽ Catholique de Louvain, Louvain-la-Neuve, Belgium, in 1995 and 1998, respectively. From 1998 to 2001, he was a Postdoctoral Researcher with the Signal Processing Laboratory, Swiss Federal Institute of Technology (EPFL), Lausanne, Switzerland. He was Assistant Professor at EPFL (2002 to 2007), where he is now an Associate Professor. His research focuses on harmonic analysis, sparse approximations and mathematical data processing in general with applications covering signal, image and high dimensional data processing, sensor networks, computer vision.
+He was co-Editor-in-Chief of Signal Processing (2002 to 2006) and Associate Editor of the IEEE Transactions on Signal Processing (2007 to 2011), the flagship journal of the signal processing community. He has been on the Technical Committee of various conferences, serves on the steering committee of the SPARS workshop and was co- General Chairman of the EUSIPCO 2008 conference.
+
+Pierre Vandergheynst is the author or co-author of more than 60 journal papers, one monograph and several book chapters. He has received two IEEE best paper awards. Professor Vandergheynst is a senior member of the IEEE, a laureate of the Apple 2007 ARTS award and of the 2009--2010 De Boelpaepe prize of the Royal Academy of Sciences of Belgium for fundamental contributions in Imaging Sciences.
+
+Professor Pierre Vandergheynst pioneered the use of spectral graph theory as a novel platform for processing signals on graphs. He has  a strong background in Computational Harmonic Analysis, having contributed to seminal papers on wavelets on manifolds~\cite{Antoine1998_JMP, Antoine1999_ACHA, Bogdanova:2007vh, Antoine:2007vy}. More generally, Prof. Pierre Vandergheynst has co-authored several recent papers applying graph based modelling for applications in data mining~\cite{Dong:2012dx, Dong:2013wn, Dong:2013ud} or computer vision~\cite{EPFL-CONF-134100}. He also has extensive experience in sparsity based modelling and compressive sensing theory, which have strong natural connections to learning.
+
+\section{Detailed Research Plan}
+
+\subsection{General Strategy}
+The project is organised as follows. The management, dissemination and networking tasks will be strictly overlooked by the Principal Investigator (WP0). The research is broken into three main thrusts, each corresponding to a Workpackage. These WPs have been chosen so they each represent the effort of a PhD student over 36 months. There will be cross-fertilisation among WPs, but the topics have been carefully chosen to avoid counter-productive overlaps. For each WP, a list of milestones is provided as a way to assess the success of the corresponding work.
+
+\subsection{WP0: Management of the project, dissemination of results and networking}
+
+{\bf Task T0.1: Management}\\
+The project management will be provided by Prof Vandergheynst, who will also commit resources for administrative assistance. No funding required.\\
+{\bf Task T0.2: Dissemination}\\
+Dissemination activities will be essentially based on publications in international journals with high impact factors and in selected international conferences. \\
+{\bf Task T0.3: Networking}\\
+Although the topic of this proposal is emerging, we have identified a few research groups with similar agendas. Some of these groups, for instance Prof. Ortega's group at USC, have already expressed their willingness to collaborate. Professor Vandergheynst will seek ways to establish visits and exchange of ideas. No funding required.
+
+
+\subsection{WP1: Foundations of Signal Processing on Graphs}
+
+%\subsection{WP2: Sparsity and smoothness}
+
+%Describe Sobolev smoothness and explain link with wavelets. Explain desire to extend to local %smoothness such as Holder. Role of localization, sparsity.
+
+The main goal of this workpackage will be to lead a thorough study of the mathematical properties of graph signal processing. Some early results illustrated below are reproduced from our recent preprint~\cite{EPFL-ARTICLE-187669}. \\
+{\bf Task T1.1: Convolution and Localization}\\
+Our focus will first be on the translation operator and the associated  convolution via filters that was introduced above. First, it is easy to see that a polynomial kernel with degree $K$ that is translated to a given center vertex is strictly localized in a ball of radius $K$ around the center vertex, where the distance $d_{\G}(\cdot,\cdot)$ used to define the ball is the \emph{geodesic} or \emph{shortest path} distance (i.e., the distance between two vertices is the minimum number of edges in any path connecting them). Note that this choice of distance measure ignores the weights of the edges and only depends on the unweighted adjacency matrix of the graph.
+\begin{lemma} \label{Le:Lap_power}
+Let $\widehat{p_K}$ be a polynomial kernel with degree $K$; i.e., %a signal that can be written as 
+\begin{align}\label{Eq:poly_kern}
+\widehat{p_K}(\l)=\sum_{k=0}^K a_k \lambda_{\l}^k 
+\end{align}
+for some coefficients $\{a_k\}_{k=0,1,\ldots,K}$. If $d_{\G}(i,n)>K$, then $(T_i p_K)(n) = 0$.
+\end{lemma}
+%\begin{proof}
+%By \cite[Lemma 5.2]{sgwt}, $d_{\G}(i,n)>K$ implies $(\L^K)_{i,n}=0$. Combining this with the fact that
+%\begin{align*}
+%(\L^k)_{i,n}=\sum_{\l=0}^{N-1} \lambda_{\l}^k \chi_{\l}^*(i)\chi_{\l}(n),
+%\end{align*}
+%and with the definitions \eqref{Eq:new_translation}
+% and \eqref{Eq:poly_kern} of the generalized translation and the polynomial kernel, we have
+%\begin{align*}
+%\left(T_i p_K\right)(n) &= \sqrt{N}\sum_{\l=0}^{N-1}\widehat{p_K}(\l)\chi_{\l}^*(i)\chi_{\l}(n) \\
+%&= \sqrt{N}\sum_{\l=0}^{N-1}\sum_{k=0}^K a_k \lambda_{\l}^k \chi_{\l}^*(i)\chi_{\l}(n) \\
+%&= \sqrt{N} \sum_{k=0}^K a_k (\L^k)_{i,n} = 0.
+%\end{align*}
+%\end{proof}
+
+More generally, as seen in Figure \ref{Fig:trans}, if we translate a smooth kernel to a given center vertex $i$, the magnitude of the translated kernel at another vertex $n$ decays as the distance between $i$ and $n$ increases.
+%, so that the energy of the translated kernel is localized around the center vertex $i$. 
+In the following theorem, we provide one estimate of this localization by combining the strict localization of polynomial kernels
+with
+%, the lower bound on the norm of a translated kernel from Lemma \ref{Le:trans_norm_bounds}, and 
+a classical result on the minimax polynomial approximation error. 
+\begin{theorem} \label{Th:trans_loc}
+Let %$K:=d_{\G}(i,n)-1$,
+$\hat{g}:[0,\lambda_{\max}]\rightarrow \Rbb$ be a kernel, %with $\hat{g}(0)\neq 0$,
+ define $d_{in}:=d_{\G}(i,n)$, and define the minimax polynomial approximation error
+\begin{align*}
+B_{\hat{g}}(K):=\inf_{\widehat{p_K}}\left\{\sup_{\lambda \in [0,\lambda_{\max}]} \left|\hat{g}(\lambda)-\widehat{p_K}(\lambda)\right|\right\},
+\end{align*}
+where the infimum is taken over all polynomials of degree $K$, as defined in \eqref{Eq:poly_kern}.
+%$\widehat{p_K}(\cdot)$ is the $K^{th}$ order shifted Chebyshev polynomial approximation to $\hat{g}$:
+ Then 
+\begin{align} \label{Eq:loc_bound0}
+|(T_i g)(n)| \leq {\sqrt{N} B_{\hat{g}}(d_{in}-1)}. % \leq \frac{\sqrt{N}B_g^{\prime}(K)}{2^K (K+1)!~|\hat{g}(0)|},
+\end{align}
+%where
+Moreover, if $\hat{g}(\cdot)$ is $d_{in}$-times continuously differentiable on $[0,\lambda_{\max}]$, then 
+\begin{align} \label{Eq:dis_loc_bound0}
+{|(T_i g)(n)|} \leq \left[
+%\left(4+\frac{4}{\pi^2}\ln(d_{in}-1)\right)
+\frac{2\sqrt{N}}{d_{in}!}\left(\frac{\lambda_{\max}}{4}\right)^{d_{in}} \right] \sup_{\lambda \in [0,\lambda_{\max}]} \left|\hat{g}^{(d_{in})}(\lambda)\right|.
+\end{align}
+%
+%\begin{align*}
+%B_g^{\prime}(K):=\sup_{\lambda \in [0,\lambda_{\max}]} |\hat{g}^{(K+1)}(\lambda)|.
+%\end{align*}
+%\end{theorem}
+%
+%{\color{red} A cleaner version:}
+%\begin{theorem}
+%Let $d_{in}:=d_{\G}(i,n)$. Then 
+%\begin{align} \label{Eq:loc_bound2}
+%\frac{|(T_i g)(n)|}{\norm{T_i g}_2} \leq \left[\frac{\sqrt{N}}{2^{d_{in}-1}~d_{in}!~|\hat{g}(0)|} \right] \sup_{\lambda \in [0,\lambda_{\max}]} |\hat{g}^{(d_{in})}(\lambda)|
+%\end{align}
+\end{theorem}
+Our main endeavour in this task will therefore be to extend this result into a comprehensive and constructive theory of localisation on graphs, with explicit ties to graph properties and an emphasis on important graph classes (scale-free networks, etc ...) as well as generalising these results to weighted graphs.\\
+{\bf Task T1.2: Uncertainty in Graph Representations}\\
+To formulate a useful theory of signal processing on graphs, we must also understand the fundamental limits of its main operations. The Heisenberg Uncertainty Principle is one such limit in the classical setting, dictating how that signals and filters cannot be arbitrarily well jointly localised in the impulse and frequency domains.  We will therefore investigate limits on the joint vertex and spectral localisation properties of graph filters. One such phenomenon has been recently discussed in~\cite{Agaskar:2012wt}, but their arguments only apply to low pass filters, whereas we already know that band pass filters such as wavelets can be localised arbitrarily well. When  manipulating the spectral domain of the Laplacian matrix, which is finite, one should not expect classical arguments to hold. In this project, we will focus on uncertainty relations measured via indirect ways, in particular joint vertex/spectral decomposition. Indeed, Lieb\cite{Lieb:1990tk} has shown that the concentration of the ambiguity function in the classical case is also subject to an uncertainty principle. In this task we will construct a graph based ambiguity function via an appropriate definition of modulations on the vertex set. Motivated by the fact that the classical modulation is a multiplication by a Laplacian eigenfunction, we define, for any $k \in \{0,1,\ldots,N-1\}$, a \emph{generalized modulation operator} $M_{k}: \Rbb^N \rightarrow \Rbb^N$ by
+\begin{eqnarray*}
+\left(M_{k}f\right)(n):=\sqrt{N}f(n)\chi_{k}(n).
+\end{eqnarray*}
+First, note that $M_0$ is the identity operator, as $\chi_{0}(n)=\frac{1}{\sqrt{N}}$ for all $n$ for connected graphs. 
+In the classical case, the modulation operator represents a translation in the Fourier domain:
+\begin{align*}
+\widehat{M_{\xi}f}(\omega)=\hat{f}(\omega-\xi), \forall \omega \in \Rbb.
+\end{align*}
+This property is not true in general for our modulation operator on graphs due to the discrete nature of the graph. However, we do have the nice property that if $\hat{g}(\l)=\delta_0(\lambda_{\l})$, then % (i.e., $f$ is constant), then %$f=\chi_0=\frac{1}{\sqrt{N}}\mathbf{1}$), then 
+\begin{align*}
+\widehat{M_k g}(\l) &=\sum_{n=1}^N \chi_{\l}^*(n) (M_k g)(n) \\
+&=  \sum_{n=1}^N \chi_{\l}^*(n) \sqrt{N} \chi_k(n) \frac{1}{\sqrt{N}} =\delta_0(\lambda_{\l}-\lambda_k), %\\
+%& \hspace{1.62in}=\hat{f}(\l-k).
+\end{align*}
+so $M_k$ maps the DC component of any signal ${f} \in \Rbb^N$ to 
+%$\left(\frac{1}{\sqrt{N}}\sum_{n=1}^N f(n)\right)\chi_k$. 
+$\hat{f}(0)\chi_k$.
+%So $M_k$ maps the DC component of any signal $f \in \Rbb^N$ to $\left(\frac{1}{\sqrt{N}}\sum_{i=1}^N f(n)\right)\chi_k$. 
+%Moreover, if we start with a window $g$ that is localized around the eigenvalue 0 in the graph spectral domain, then $M_k g$ should be localized around the eigenvalue $\lambda_k$ in the graph spectral domain. 
+%Additionally,
+%$M_k$ maps the DC component of any signal ${f} \in \Rbb^N$ to 
+%$\left(\frac{1}{\sqrt{N}}\sum_{n=1}^N f(n)\right)\chi_k$. 
+%$\hat{f}(0)\chi_k$.
+Moreover, if we start with a function ${f}$ that is localized around the eigenvalue 0 in the graph spectral domain then $M_k {f}$ %is 
+will be localized around the eigenvalue $\lambda_k$ in the graph spectral domain. We have recently quantified this statement in the following result~\cite{EPFL-CONF-175341} 
+\begin{theorem} \label{Th:mod_trans}
+Given a weighted graph $\G$ with $N$ vertices, %let $C_1(\G)$ be a constant such that 
+%\begin{align}\label{Eq:C1_cond}
+%\max_{\footnotesize \begin{array}{c}\l=0,1,\ldots,N-1 \\ i=1,2,\ldots,N\end{array}} \left\{|\chi_{\l}(i)|\right\} \leq \frac{C_1}{\sqrt{N}}.
+%\end{align}
+%I
+if for some $\kappa > 0$, a %given 
+%signal $f$ 
+kernel $\hat{f}$ %with $\norm{g}_2=1$ 
+satisfies 
+\begin{align} \label{Eq:gsum_cond}
+\sqrt{N}\sum_{\l=1}^{N-1}{\mu_{\l}|\hat{f}(\l)|} \leq \frac{|\hat{f}(0)|}{1+\kappa},
+%\frac{1}{|\hat{f}(0)|}\sum_{\l=1}^{N-1}{|\hat{f}(\l)|} \leq \frac{1}{C_1+\kappa (C_1)^3},
+\end{align}
+ then
+ \begin{align}\label{Eq:mod_trans_result}
+ |\widehat{M_k f}(k)| \geq \kappa |\widehat{M_k f}(\l)|~\hbox{ for all }\l\neq k.
+ \end{align}
+\end{theorem}
+Based on this localisation result, and inspired by Lieb, we will therefore study the localisation of the ambiguity function associated to a graph filter $g$~:
+$$
+\mathcal{A}_g(i,k) = \langle T_i M_k g, g \rangle.
+$$
+Our starting point will be to look for estimates of $\|\mathcal{A}_g\|_{1,1}$ as a proxy for the concentration of the ambiguity.\\
+{\bf Task T1.3: Extension to edge-centric signals and directed graphs}\\
+This task is motivated by applications where the connectivity of the graph is fixed (the set of edges), but the edge weights represent the signal to be processed, i.e the information is not on the vertices but on the edges of the graph. An important application scenario is the processing of large Origin-Destination matrices or flows: these matrices represent graphs whose edge weights measure the amount of "traffic" between two regions represented by vertices. The vertices and their connections are fixed, but the amount of traffic can vary. The Principal Investigator has exclusive access to Origin/Destination matrices that represent large scale pedestrian flows in Swiss railway stations. However, processing this data requires to generalise the above constructed theory of signal processing on graphs to signals defined at the edges of a directed graph. We propose to carry this generalisation via the construction of the \emph{line graph} $L(\G)$ of $\G$~\cite{Aigner:1967gn}. The line graph essentially exchanges the role of vertices and edges in the original graph and therefore constructing filters on $L(\G)$ will result in an appropriate setting for processing edge signals. Finally, we will consider a direct application of Chung's directed graph Laplacian~\cite{Chung_directed} to generalise the above mentioned ideas to directed graphs. The advantage of Chung's construction is that the corresponding Laplacian operator remains symmetric and hence has real eigenvalues.
+\\
+{\bf Milestones:} A comprehensive theory of localisation on graphs, with sharp results for important classes of graphs. A new breed of uncertainty principles based on joint vertex/spectral analysis. A constructive extension of signal processing on graphs for edge-based signals and directed graphs, with a simple software toolbox for experimentation and validation.
+
+%Via the incidence matrix. Application to OD flows
+
+
+\subsection{WP2: Connections with Learning Theory}
+
+In this workpackage we would like to set the foundations of a new learning theory using graphical structures. To this end we will leverage and generalise the idea of sparse representations of functions to signals on graphs, focusing on characterising precisely what signal properties lead to sparse wavelet expansions. This will lead to transductive learning results. In a second step, we will develop inductive learning results by studying a mechanism for out-of-sample extension of graph wavelet regularisation. Leveraging recent results on the convergence of the graph laplacian to the Laplace-Beltrami operator on manifolds, we will  set up
+new connections between classes of smooth functions on graphs and their asymptotic convergence to smooth functions on manifolds. The out-of-sample extension mechanism will therefore allow us to quantify precisely what type of distributions can be inferred by partial observations on graphs.\\
+{\bf Task 2.1: Beyond global smoothness}\\
+The success of sparse representations of signals and images can be explained, in large parts, by the existence of sound mathematical results linking sparsity to signal structures. In particular, it is well known that sparsity is strongly linked to various notions of smoothness. For example, piecewise-smooth signals are optimally approximated by sparse representations in a wavelet basis because the wavelet coefficients of such signals decay optimally fast. That notion of \emph{local} smoothness is best captured by Besov or H\"older norms. Intuitively, wavelets sparsify piecewise smooth signals because they behave like multiresolution differential operators~: at sufficiently small scales, most wavelet coefficients $\langle \psi_{t,b}, f \rangle$ will be small because the signal will appear locally polynomial. There are also many interesting signal models for which the underlying assumption is a \emph{global} smoothness hypothesis. These models are best captured by Sobolev regularity, which also translates directly into sparsity (both for wavelets or Fourier coefficients).
+
+Since smoothness is the signal structure that induces sparsity for signals and images, it is vital to precisely understand what is the equivalent property for graph data~: what structure induces sparsity of the spectral graph wavelet representation. This seemingly simple question is key to a coherent mathematical framework linking learning with graphs and harmonic analysis on graphs. However, due to the fundamentally discrete nature of graphs, there is no straightforward generalization. 
+
+Our starting point is be a notion of global regularity of graph data captured by an extension of Sobolev norms. Recall that the Sobolev (semi-)norm of a function $f$ on the circle can be defined by controlling the $p$-norm of the signal derivatives~:
+$$
+\|f \|_{W^{k,p}} = \Bigl(\sum_{\alpha \leq k} \|f^{(\alpha)}\|^p_p \Bigr)^{1/p}, \quad 1 \leq p < +\infty 
+$$ 
+and the extension to $p=\infty$ is done by using the corresponding norm. The case $p=2$ is particularly interesting because it translates immediately into a control of the decay of the Fourier coefficients of $f$. Basically, $f\in W^{k,2}$ means it is square integrable and
+$$
+\sum_{n\in \mathbb{Z}} \bigl( 
+1 + |n|^2
+\bigr)^k |\hat{f}(n)|^2.
+$$
+This characterization is key to extending to graphs. Indeed, the boundedness of the 2-Dirichlet form $S_2(f)$ is precisely equivalent to requiring that $f$ belongs to a natural generalization of $W^{1,2}$, where the graph Fourier transform coefficients are used. 
+
+Let us now outline why this particular notion of regularity is connected to sparsity of the spectral graph wavelet coefficients. Remark that~:
+$$
+\sum_i |\langle \psi_{t_n,i}, f\rangle|^2 = \sum_\ell |g(t_n\lambda_\ell)|^2 |\hat{f}(\ell)|^2,
+$$
+and so 
+$$
+\sum_n t_n^2 \sum_i |\langle \psi_{t_n,i}, f\rangle|^2 \approx \| f\|_{W^{1,2}},
+$$
+which in turns imposes that the wavelet transform coefficients decay sufficiently fast with scale. Note though that this reasoning implicitly assumes a large spectral radius and that the effects of finite "frequency range", or finite resolution, should be investigated. The conclusion, though, is that a function that is smooth on the graph in the sense of having a small 2-Dirichlet form has sparse wavelet coefficients in the spectral graph wavelet domain.
+
+%\subsection{Beyond global smoothness}
+As explained above, it is also important to connect sparsity in the spectral graph wavelet representation to more local notions of smoothness. This could be done by either extending the equivalence between Sobolev norms and norms on graph wavelet coefficients to the case $p=\infty$ (Lipschitz smoothness) or by directly studying graph based extension of H\"older regularity. A possible definition would be that $f$ is $\alpha$-H\"older regular if it satisfies the following~
+$$
+|f(i) - f(j)| \leq C \cdot d_G(i,j)^\alpha, 
+$$
+where $d_G(.,.)$ is the graph geodesic distance between vertices. In the classical euclidean wavelet transform, this condition also translates into the decay at small scales of the wavelet coefficients. Two key ingredients in the proof are the zero-mean condition of wavelets and their localization at small scales. These two requirements are also valid for spectral graph wavelets and we will thus try to use them to extend the equivalence between local H\"older regularity and sparsity as future work.  
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[scale=0.5]{WaveletCoefficientsMap.pdf}
+%\caption{\label{fig:SparseSmooth} Wavelet transform of a piecewise smooth function on a graph. The top left plot shows the scaling function coefficients. Wavelet coefficients are increasingly packed along the singularity that cuts the graph in two almost horizontally.}
+%\label{default}
+%\end{center}
+%\end{figure}
+
+This connection between smoothness and sparsity allows us to set up a straightforward algorithm for transductive learning by leveraging the smoothness assumption. Assume we want to regress an unknown piecewise smooth $f$ function on a connected graph from observations limited to few randomly selected samples. We can cast this task as a sparsity-constrained inverse problem of the form~:
+\begin{equation}
+\label{eq:graph_LASSO}
+f = \textrm{arg}\min_u \| \mathbf{M} W u - y \|_2^2 + \lambda \| u \|_1
+\end{equation}
+where the minimization is performed over wavelet coefficients $u$, the observed data is $y$, $W$ is the wavelet synthesis operator (adjoint of the forward transform) and sparsity is enforced by the use of the one norm $ \| u \|_1$. The restriction operator $\mathbf{M}$ simply sets unobserved vertices values to zero. This convex optimization problem can be solved efficiently by iterative soft-thresholding of the wavelet coefficients using the fast spectral graph wavelet transform algorithm. 
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\begin{tabular}{ccc}
+%\includegraphics[scale=0.15]{Min-orignial.png} &
+%\includegraphics[scale=0.15]{Min-5percent.png} &
+%\includegraphics[scale=0.15]{Min-5percent-rec.png} \\
+%(a) & (b) & (c)
+%\end{tabular}
+%\caption{\label{fig:regression} Regression of a piecewise smooth function on a graph from few samples. Original data (a). Randomly observed samples (b), corresponding to 5\% of the original data. Recovered data through convex optimization (c). More than 97\% of the original samples are exactly recovered.}
+%\label{default}
+%\end{center}
+%\end{figure}
+
+One of our goals in the forthcoming months will be to leverage the extensive body of results on harmonic analysis, sparsity and inverse problems to semi-supervised learning using spectral graph wavelets, in particular using notions of structured sparsity.\\
+{\bf Task 2.2: Sobolev regular interpolation}\\
+When performing regression from scattered values, an essential tool in traditional signal processing is spline interpolation~\cite{UNSER}. One of the most interesting properties of splines is that they allow to precisely control the regularity of the interpolated function. Recently, Pezenson~\cite{Pesenson:2011tu} has proposed a construction of interpolating splines on graphs. We will basically seek to adapt this construction to our framework by explicitly using our localisation operator and the proper smoothness class defined via the spectral decomposition of the Laplacian. Starting with a regularized version $\mathcal{L}^t_\epsilon$ of the $t$-th power of the Laplacian, the Green's function localized at $w$, which we will note $E^w_{2t,\epsilon}$, satisfies:
+$$
+(\epsilon I + \mathcal{L})^t E^w_{2t,\epsilon} = \delta_w.
+$$
+This relationship is the building block of variational splines. In the Graph Fourier domain, this reads:
+$$
+(\epsilon + \lambda_\ell)^t g^w_{2t,\epsilon}(\lambda_\ell) = \phi_\ell(w).
+$$
+Let us define the kernel $g^w_{2t,\epsilon}$ of the localized Green's function via the Fourier shift or Localization operator acting on the basic Green kernel:
+$$
+g^w_{2t,\epsilon}(\lambda_\ell) \equiv g_{2t,\epsilon}(\lambda_\ell) \phi_\ell(w),
+$$
+which leads directly to~:
+$$
+(\epsilon + \lambda_\ell)^t g_{2t,\epsilon}(\lambda_\ell) = 1.
+$$
+We will be using a slightly modified definition of the Sobolev norm introduced above~:
+$$
+\|f\|_{H_{t,\epsilon}}^2 = \sum_\ell (\epsilon + \lambda_\ell)^{2t} | \hat{f}(\ell)|^2.
+$$
+It is interesting to notice that the Sobolev norm of localized Green's functions is independent of the localization, as it should~:
+\begin{equation*}
+\| g^w_{2t,\epsilon} \|_{H_{t,\epsilon}}^2  =  \sum_\ell (\epsilon + \lambda_\ell)^{2t} | g^w_{2t,\epsilon}(\lambda_\ell)|^2  = 1.
+\end{equation*}
+These preliminaries allow us to construct a Parseval frame of localised Green's functions on $\G$~:
+\begin{theorem}
+The set of localized Green's functions $E^w_{2t,\epsilon}$, $w \in V$ is a Parseval frame for the Sobolev space $H_{t,\epsilon}$, meaning that for every $\alpha \in \ell_2(V)$
+$$
+\| \sum_{u \in V} \alpha[u]  E^u_{2t,\epsilon} \|_{H_{t,\epsilon}}^2 = \| \alpha \|^2_2.
+$$
+\end{theorem}
+This construction will constitute our starting point for using interpolating splines for learning smooth functions over $\G$. It will be interesting to study more precisely the localisation properties of those splines and see wether the interpolated function can be computed with dedicated algorithms using the particular form of the frame. Finally, since Green's functions are naturally related to the pseudo-inverse of the Laplacian\footnote{In fact it is easy to check that 
+$$
+\langle E^u_{2t,\epsilon} , E^v_{2t,\epsilon} \rangle_{H_{t,\epsilon}}  = \langle \delta_u ,\bigl( \mathcal{L}_\epsilon^t \bigr)^\dagger \delta_v \rangle.
+$$
+}, it might also be advantageous to study the properties of the frame in the resistive metric rather than in the traditional geodesic metric over $\G$.\\
+{\bf Task 2.3: convergence to manifolds}\\
+Suppose we are given a graph $\G$ that is sampled from a manifold $\mathcal{M}$ with Laplace-Beltrami operator $\Delta_{\mathcal{M}}$. The connections on $\G$ are computed by associating a function of the euclidean distance in embedding space, typically an exponential, to the $k$-nearest neighbour graph of samples. Let $\L$ be the Laplacian matrix of that graph. A recent series of fascinating papers~\cite{Singer:2006ud, belkin_conv} have focused on studying the convergence of $\L$ to $\Delta_{\mathcal{M}}$ as well as the convergence of the associated eigenvectors. Interestingly, this convergence allows us to estimate the action of $\Delta_{\mathcal{M}}$ on a given function $f$ at a point $x$ from sampled values $f(x_i)$~:
+\begin{equation}
+\label{eq:LaplacianExtension}
+\Delta_{\mathcal{M}} f(x) \approx
+-\frac{1}{t} (4 \pi t)^{\frac{n}{2}}
+\Bigl(
+f(x) - \sum_{x_i}f(x_i)
+e^{-\frac{\norm{x-x_i}^2}{4t}}
+\Bigr).
+\end{equation}
+Naturally, this expression paves the way to extending the action of linear filters to out-of-sample values by simply inserting the expression for the estimated Laplacian action into the filter definition. One particular application we will investigate is as follows. Suppose we have solved the LASSO problem~\eqref{eq:graph_LASSO} in a transductive way (i.e for sampled values only).  We can now use~\eqref{eq:LaplacianExtension} to extend the wavelet synthesis operator to any new data point $x$ and synthesise a solution based only the pre-computed solution coefficients $u$.  We will study this mechanism, in particular trying to understand the connection with the smoothness of the asymptotic solution. One guideline will be the potential connection to wavelets on manifolds constructed directly from the eigendecomposition of $\Delta_{\mathcal{M}}$ by Geyer and Mayeli \cite{Geller:2009uv}.
+%Explain convergence to Laplace Beltrami, this allows to compute wavelet at any new point, then using coefficients regressed from samples only, we can extend solution to manifold
+\\
+{\bf Milestones:} Results on the sparsifying properties of graph wavelets for locally smooth signals on graphs. Principled approaches based on linear filters for regression of piece-wise smooth functions on graphs. Application of these results to transductive and semi-supervised learning. Out of sample extension of spectral constructions based on convergence of the graph Laplacian to the Laplace-Beltrami operator.
+
+
+\subsection{WP3: Computational Aspects}
+
+One of the main application of graph based algorithms will be in the processing of very large datasets. The need for efficient algorithms and implementations is therefore stringent. Obviously, one cannot compute the eigenvectors of very large laplacian matrices and directly work in the spectral domain, but other efficient methods can be used to implement graph filtering. First \cite{sgwt} has  introduced a very fast algorithm to compute the spectral graph wavelet transform and its adjoint. The algorithm is based on the approximation of the kernel $g$ by an expansion in Chebychef polynomials:
+ \begin{equation} \label{eq:gtn-cheby-expansion}
+   g(t_nx)=\frac{1}{2} c_{n,0} +\sum_{k=1}^{\infty} c_{n,k} \overline{T}_k(x).
+ \end{equation} 
+ When the Laplacian matrix is sparse, the corresponding approximate wavelet transform is computed efficiently by sparse matrix-vector multiplications and by making use of recurrence relations for the polynomials $ \overline{T}_k$. This algorithm is of particular interest for distributed applications, for instance in sensor networks, where the whole method is implemented via passing scalar messages. It can of course be used with any filter. In this workpackage we will be focusing on efficient implementations for centralised, eventually parallel, architectures by explicitly leveraging recent advances in software engineering of graph based applications. The vertex centric model at the heart of the proposed theory of signal processing on graphs lends itself remarkably well  to some of the latest and most promising computational frameworks for large scale processing with graph data structures. Furthermore, we will exploit the multi resolution nature of wavelets to derive scalable coarse-to-fine algorithms for graph signal processing.\\
+ {\bf Task 3.1: Large scale processing with GraphLab and GraphChi}\\
+ GraphLab~\cite{Gonzalez:2012ws} is a recent framework for distributed calculations involving graphs. It is based on a vertex centric framework that implements an abstraction level very similar to the well-known Map-Reduce framework, but built from scratch for dependencies embodied in a graph structure. GraphChi~\cite{Kyrola:2012uo} is a similar abstraction framework but specifically built for large scale applications on a single machine, with optimal use of memory and disk accesses. GraphChi does not necessitate special computational resources (cluster) and can therefore be used more easily than GraphLab. It is particularly well-suited for localised filtering on graphs with sparse laplacian matrices. Indeed, localised filters can be thought of as windows of a fixed and controlled size (geodesic radius), sliding over the graph and in which simple recursive calculation are done to implement the action of the filter. These calculations only invoke edge weights and the spectral signature of the filter or, equivalently, its Chebyshev expansion coefficients. This sliding window metaphor is precisely at the heart of GraphChi and we therefore expect strong benefits in implementing all basic signal processing on graphs operations via this framework. One of the main outcomes of this work package will be a toolkit (in the GraphLab terminology) and a set of easy-to-use python wrappers.
+ \\
+ {\bf Task 3.2: Principled coarse-to-fine computations on graphs}\\ 
+This second task will typically build on Task 3.1 and go one step further via the idea of coarse-to-fine calculations. Indeed, in most wavelet based problems, multiresolution allows to approximately solve the problem at a coarse scale with low computational burden and later refine the solution locally at finer scales if necessary. We believe this is one of the main strengths of spectral graph wavelets, but they will only live up to their expectations if this can be turned into a computational statement. To deploy coarse-to-fine computations, we will first study various methods to downsample a large graph, if possible in a way that is compatible with the spectral graph wavelets structure. One such technique involves recursively partitioning the graph using a colouring scheme based on the polarity of the largest eigenvector of the Laplacian. We will start by exploring this idea in the framework of a generalised graph Laplacian Pyramid where each level involves only linear graph filtering implemented with GraphChi.
+ \\
+ {\bf Task 3.3: Large scale demonstrations}\\
+The final task in this workpackage will consist in validating the software approach on various datasets and building connections with WP1 and WP2 by providing novel and efficient computational approaches. We will be looking to apply our approach to large scale problems, in particular social network datasets available on the internet and for which reference approaches have been published. But we will also apply our code to original, even exclusive large scale datasets. We have direct access to several challenging datasets: large asteroid meshes with Albedo data on the vertices, high resolution Planck Cosmic Microwave Data (non-uniformly sampled over a sphere) as well a large graph of similarities between songs from the Montreux Jazz Festival Digital Archive.\\
+ {\bf Milestones:} GraphChi implementation of linear filtering on graphs, spectral graph wavelet transform and associated optimisation problems. Laplacian pyramid on graph with efficient GraphChi implementation for one or more choices of graph partitioning. Evaluation on large scale datasets. 
+ %ex: label propagation with filtering for Genezik.
+
+\section{Timeline}
+
+The detailed research timeline of the project is depicted below. The project lead is carried out by Prof. P. Vandergheynst. An experienced post-doc researcher, Dr Benjamin Ricaud, will help supervise the PhD students. 
+\begin{figure}[htbp]
+\begin{center}
+
+\begin{ganttchart}[x unit=0.29cm, y unit title=0.4cm,
+y unit chart=0.5cm,
+vgrid,hgrid, 
+title label anchor/.style={below=-1.6ex},
+title left shift=.05,
+title right shift=-.05,
+title height=1,
+bar/.style={fill=gray!50},
+incomplete/.style={fill=white},
+progress label text={},
+bar height=0.7,
+group right shift=0,
+group top shift=.6,
+group height=.3,
+group peaks={}{}{.2}]{36}
+%labels
+\gantttitle{Months}{36} \\
+\gantttitle{Year 1}{12} 
+\gantttitle{Year 2}{12} 
+\gantttitle{Year 3}{12} \\
+%tasks
+\ganttbar{T1.1}{1}{18} \\
+\ganttbar{T1.2}{7}{18} \\
+\ganttbar{T1.3}{19}{36} \\
+\ganttbar{T2.1}{1}{12} \\
+\ganttbar{T2.2}{13}{24} \\
+\ganttbar{T2.3}{19}{36} \\
+\ganttbar{T3.1}{1}{18} \\
+\ganttbar{T3.2}{13}{30} \\
+\ganttbar{T3.3}{13}{36} 
+%\ganttbar[progress=0]{task 8}{21}{24}
+
+\end{ganttchart}
+\end{center}
+\caption{Project timeline}
+\end{figure}
+
+\section{Significance of Planned Research}
+
+An era of fast paced scientific and technological innovations ("Data Driven Science") based on the availability of large scale datasets ("Big Data") is definitely within our reach. The span of problems involving big data is staggering, from brain understanding to cosmology. However, exploiting these vast amounts of data necessitates to solve several challenges. This project aims at providing the necessary mathematical framework, algorithms and computational tools to overcome some of the deadlocks of big data processing. 
+
+We expect that the results of this project will make it as easy to analyse and process large graph based data as it is currently to process signals or images, thereby opening the door to making big data analysis part of the standard toolbox of any engineer. Given the ubiquity of these problems, this would be a very significant achievement. Moreover, since the industry is also strongly embracing the big data paradigm, we expect our results to fuel technological innovations in the ICT sphere, strengthening the position of Switzerland in that domain. 
+
+\section{Risk Management}
+Although the three research axes proposed in this project are fairly adventurous, they each contain elements to mitigate risks. In WP1, some amount of work has already been carried out as preparation by Nathana‘l Perraudin during his MSc thesis dedicated to uncertainty in graph representations. Moreover, the basic elements allowing to study localisation are already in place. For WP2, Prof. Pierre Vandergheynst has carried extensive experiments in transductive learning with spectral graph wavelets. In particular, all the necessary software is already available. Finally in WP3, the PhD student we would hire on this project (Kirell Benzi) has already joined EPFL and has been trained in the necessary software engineering tools.
+
+\section{Ethical Aspects of the Research}
+Not applicable.
+
+\bibliographystyle{IEEEtran}
+\bibliography{/Users/vandergh_net/Dropbox/Papers2/PV-papersdb}
+
+\end{document}
+
+
