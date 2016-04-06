@@ -19,8 +19,6 @@
 \usepackage[style=numeric,backend=biber]{biblatex} \bibliography{refs}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 
-\newcommand{\nati}[1]{{\color[rgb]{.1,.6,.1}{#1}}}
-
 \begin{document}
 
 \title{Graph Signal Processing Summer School}
@@ -168,18 +166,19 @@ depend on their interests.
 	\item Graph signal transforms \cite{szlam,gavish,Maggioni_biorthogonal,coifman_diffusion_2006,lafon_coarse,narang_lifting_graphs}
 	\item Graph filter identification \cite{thanou_TSP_2014}
 	\item Graph construction and graph topology inference \cite{kalofolias2016learn,Dong:2014tj}
-	\item Prediction and learning in graphs \nati{??????}
+	\item Prediction and learning in graphs
 	\item Statistical graph signal processing \cite{perraudin2016stationary,zhang2015graph,gadde2015probabilistic}
-	\item Signals in high-order graphs \nati{??????}
-	\item Non-linear graph signal processing \nati{??????}
+	\item Signals in high-order graphs
+	\item Non-linear graph signal processing
 	\item Graph-based image and video processing \cite{elmoataz2008nonlocal,lezoray2008nonlocal,shahid2015fast}
 	\item Applications to neuroscience and other medical fields \cite{huang2015graph,hu2015spectral}
-	\item Applications to economics and social networks \nati{I do not have any references for this one.}
+	\item Applications to economics and social networks
+	% Nath: I do not have any references for this one.
 	\item Applications to infrastructure networks such as communication, transportation, power networks \cite{mcgraw,jain2014big,borgnat2011shared}
 	% Added by Michaël
 	\item Learning graph embeddings \cite{von2008consistency,zhou2006learning,belkin2003laplacian}
 	\item Machine Learning with Graph regularization \cite{smola,belkin2005towards,zhou2004regularization,zhou2005learning,belkin2006manifold}
-	\item Learning with graph signals \nati{What is the difference with the one before}
+	\item Extracting features from graph signals
 	% Added by Nathanael
 	\item Graph coarsening, multi-scale graph signal processing \cite{spielman2011graph,shuman2016multiscale,liu_coarsening,lafon_coarse,jansen}
 	\item Graph spectral theory \cite{chung1997spectral,belkin2007convergence,shuman2015vertex,sandryhaila2014discrete,Nakatsukasa2013mysteries,brooks,dekel}
@@ -257,9 +256,9 @@ confirmations are pending.
 	\end{itemize}
 \end{itemize}
 
-In case the aforementioned speakers cannot make it, below is another list of
-potential ones. The diversity of this school is again reflected in the broad
-range of considered speakers. 
+In case the aforementioned speakers cannot make it, below is another list (in no
+particular order) of potential ones. The diversity of this school is again
+reflected in the broad range of considered speakers. 
 \begin{itemize}
 \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 \item TRACK 1
@@ -267,8 +266,12 @@ range of considered speakers.
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 	\item \href{http://ee.usc.edu/faculty_staff/faculty_directory/ortega.htm}
 		{Antonio Ortega}, University of Southern California, USA
+	\item \href{https://users.ece.cmu.edu/~moura/}
+		{José M. F. Moura}, Carnegie Mellon University, USA
+		% GSP2016
 	\item \href{http://people.epfl.ch/pascal.frossard}
 		{Pascal Frossard}, EPFL, Switzerland
+		% GSP2016
 	\end{itemize}
 \item TRACK 2
 	\begin{itemize}
@@ -285,6 +288,18 @@ range of considered speakers.
 \item TRACK 3
 	\begin{itemize}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
+	\item \href{https://elmoatazbill.users.greyc.fr/}
+		{Abderrahim Elmoataz}, University of Caen Basse Normandie, France
+		% suggested by Pascal
+	\item \href{http://perso.ens-lyon.fr/patrick.flandrin/}
+		{Patrick Flandrin}, ENS Lyon / CNRS, France
+		% suggested by Pascal
+	\item \href{http://perso.ens-lyon.fr/pierre.borgnat/}
+		{Pierre Borgnat}, ENS Lyon / CNRS, France
+		% suggested by Pascal
+	\item \href{http://www.ece.mcgill.ca/~mrabba1/}
+		{Michael Rabbat}, McGill University, Canada
+		% GSP2016
 	\item \href{http://infocom.uniroma1.it/sergio/}
 		{Sergio Barbarossa}, Sapienza University of Rome, Italy
 	\item \href{http://research.microsoft.com/en-us/people/pachou/}
@@ -318,10 +333,6 @@ range of considered speakers.
 		% Statistical physics, Benjamin peut le contacter
 	\item \href{http://www.cs.cornell.edu/home/kleinber/}
 		{Jon Kleinberg}, Cornell University, USA
-	\item \href{http://people.epfl.ch/patrick.thiran}
-		{Patrick Thiran}, EPFL, Switzerland
-	\item \href{http://icapeople.epfl.ch/grossglauser/}
-		{Matthias Grossglauser}, EPFL, Switzerland
 	\end{itemize}
 \end{itemize}
 
@@ -337,18 +348,10 @@ students of the following groups to be interested, some of which we have
 collaborated with.
 \begin{itemize}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
-	\item \href{http://perso.ens-lyon.fr/pierre.borgnat/}
-		{Pierre Borgnat}, ENS Lyon / CNRS, France
-	\item \href{https://users.ece.cmu.edu/~moura/}
-		{José M. F. Moura}, Carnegie Mellon University, USA
-		% GSP2016
 	\item \href{https://www.eecs.berkeley.edu/~kannanr/}
 		{Kannan Ramchandran}, UC Berkeley, USA
 	\item \href{http://www.vincent-gripon.com/}
 		{Vincent Gripon}, Télécom Bretagne, France
-	\item \href{http://www.ece.mcgill.ca/~mrabba1/}
-		{Michael Rabbat}, McGill University, Canada
-		% GSP2016
 	\item \href{http://www.macalester.edu/~dshuman1/}
 		{David Shuman}, Macalester College, USA
 	\item \href{http://www.inf.usi.ch/bronstein/}
@@ -361,6 +364,10 @@ collaborated with.
 		{Alfred Hero}, University of Michigan, USA
 	\item \href{http://www.epicx-lab.com/vittoria-colizza.html}
 		{Vittoria Colizza}, Inserm, France
+	\item \href{http://people.epfl.ch/patrick.thiran}
+		{Patrick Thiran}, EPFL, Switzerland
+	\item \href{http://icapeople.epfl.ch/grossglauser/}
+		{Matthias Grossglauser}, EPFL, Switzerland
 \end{itemize}
 
 We however do not expect more than 40 participants, the last edition attracted
@@ -378,8 +385,7 @@ students may exchange and eventually develop future collaborations.
 
 \subsection{Organization}
 
-This school is jointly organized by EPFL and Aix-Marseille University. The
-organizers are:
+This school is to be organized by:
 \begin{itemize}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 	\item Michaël Defferrard, PhD student, EPFL, Switzerland
@@ -410,13 +416,9 @@ Frossard, Thiran and Grossglauser.
 
 \subsection{ECTS credits}
 
-We suggest to offer 2 ECTS points to Ph.D. students successfully participating
-in the school. A certificate of participation will be delivered at the end of
-the week; each university will then decide if they accept to deliver the
-credits. The students interested in earning those credits will have a final exam
-in the last day.
-
-%To that end, we would like to test the student’s comprehension of the presented topics. This will be accomplished by handing out an exercise sheet covering the topics in question. In addition to that, the exercise sheet will also award points for good suggestions where the newly learned techniques could be applied in their field of study. We believe this will give students the opportunity to lay the foundation for fruitful collaboration. The evaluation of the handed in solutions will be performed at the end of the summer school.
+We suggest to offer 2 ECTS points to Ph.D. students who did participate in the
+school. To that end, a certificate of participation will be delivered at the end
+of the week; it is then up to home institutions to award those credits.
 
 \subsection{Location}
 
@@ -432,13 +434,20 @@ place for overseas speakers and participants.
 
 \subsection{Schedule}
 
-The school will last five days, from Monday morning to Friday afternoon. We plan
-to leave Monday morning free (for participants to arrive and install themselves)
-and to offer an excursion on Wednesday afternoon, which leaves us with four days
-for lectures. Following the schedule shown in Table~\ref{schedule}, we have room
-for 24 lessons of 45 minutes. Each speaker will be allocated five or six
-lessons, which will be split into a morning and an afternoon session, preferably
-on different days.
+The school will last five days, from Monday morning to Friday afternoon. Rooms
+will be available from Sunday evening to Friday morning. Participants will have
+to arrive and install themselves at CIRM on Sunday as lectures will start Monday
+morning. We plan to finish early on Friday and to offer an excursion on
+Wednesday afternoon, which leaves us with four and an half days for lectures.
+Following the schedule shown in Table~\ref{schedule}, we have room for 24
+lessons of 45 minutes. Each speaker will be allocated five or six lessons, which
+will be split into a morning and an afternoon session, preferably on different
+days.
+
+Attendees will be offered the opportunity to present their work. Interested
+students will have to provide an abstract. The scientific committee will choose
+the most relevant ones, which will be allocated a 20 to 30 minutes time slot at
+the end of a day. The participation to these presentations is optional.
 
 \begin{table}[ht]
 	\centering
@@ -449,12 +458,13 @@ on different days.
 	10:45 & - & 11:15 & Coffee break \\
 	11:15 & - & 12:00 & Lesson 3 \\
 	12:15 & - & 13:15 & Lunch \\
-	14:00 & - & 14:45 & Lesson 4 \\
-	15:00 & - & 15:45 & Lesson 5 \\
-	15:45 & - & 16:15 & Coffee break \\
-	16:15 & - & 17:00 & Lesson 6 \\
-	17:15 & - & 19:00 & Free time, discussions \\
-	20:00 &   &       &  Dinner and social events
+	13:30 & - & 14:45 & Free time, discussions \\
+	15:00 & - & 15:45 & Lesson 4 \\
+	16:00 & - & 16:45 & Lesson 5 \\
+	16:45 & - & 17:15 & Coffee break \\
+	17:15 & - & 18:00 & Lesson 6 \\
+	18:30 & - & 19:30 & Student presentations \\
+	20:00 &   &       & Dinner and social events
 	\end{tabular}
 	\caption{Schedule of a typical day.}
 	\label{schedule}
@@ -484,7 +494,9 @@ event. This will thus cover 20 of our participants.
 
 We plan to invite five speakers, three of which will come from Europe and two
 from the US. We estimate the travel expenses to be around 800€ from Europe and
-2000€ from the US.
+1500€ from the US. We will provide them meals and an individual room at CIRM.
+We will give a flat rate for those who prefer to self-organize, e.g. for family
+reasons.
 
 If this proposal is accepted, we will request additional funding to local
 communities in the CIRM area\footnote{Coordinated by Yannick Boursier.} and to
@@ -494,9 +506,9 @@ the IEEE Signal Processing Society (SPS). While there is no call for proposals
 for 2018 yet, the winter 2016-2017 version states that ``an SPS contribution of
 up to 5k US dollars can be included in the budget''.
 
-To cover additional expenses and to incentivize participants to be 'active', we
-further ask for a registration fee of 200€ per PhD student (400€ for
-post-doctoral researchers and 800€ for non-academic).
+To cover additional expenses and to incentivize participants to be ''active``,
+we further ask for a registration fee of 200€ per participant from academia and
+800€ for non-academic people.
 
 A detailed budget can be found in tables~\ref{tab:expenditures} and
 \ref{tab:revenues}.
@@ -510,11 +522,11 @@ A detailed budget can be found in tables~\ref{tab:expenditures} and
 	Meals and lodging (participants) & $88.5\cdot5=442.50$ & 40 & 17'700 \\
 	Meals and lodging (speakers) & 800 & 5 & 4'000 \\
 	Travel costs for EU speakers & 800  & 3 & 2'400 \\
-	Travel costs for US speakers & 2000 & 2 & 4'000 \\
+	Travel costs for US speakers & 1500 & 2 & 3'000 \\
 	Excursion & 30 & 44 & 1'320 \\
 	Miscellaneous & 1500 & 1 & 1'500 \\
 	\hline
-	\multicolumn{3}{|l|}{\textbf{Total}} & \textbf{30'920} \\
+	\multicolumn{3}{|l|}{\textbf{Total}} & \textbf{29'920} \\
 	\hline
 	\end{tabular}
 	\caption{Budgeted expenditures.}
