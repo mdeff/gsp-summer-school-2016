@@ -66,6 +66,7 @@ held in Leukerbad, Switzerland in summer 2015.
 
 La même chose en français.
 
+
 \section{Scientific content}
 
 % Graphs == avenir du futur
@@ -76,8 +77,7 @@ enables the analysis and processing of signals who reside on irregular
 (non-Euclidean) domains, such as infrastructure or social networks. Graphs may
 further be used to incorporate external information into data models, such as
 hyperlinks or citations between documents, and to approximate the data manifold
-by constructing a similarity graph, e.g. the similarity between patches of an
-image.
+by constructing a similarity graph.
 
 % Graphs
 Graphs are generic data representation forms that are useful for describing the
@@ -96,14 +96,16 @@ samples as a graph signal.
 
 % GSP
 The purpose of GSP is to exploit the underlying structure to analyze, process
-and learn graph signals. Examples from the classical signal processing toolbox
+and learn signals residing on graphs. 
+%Examples from the classical signal processing toolbox
+Classical GSP tasks
 include filtering, denoising, inpainting, compressing. An important
 consideration when designing such tools is their computational complexity, which
 can often be improved by spectral relaxations or numerical approximations.
 Efficiency is key to cope with the ever growing size of datasets.
 
 % Feature vs data graph
-There exists two paradigms to model datasets using graphs: 1) constructing a
+There exists two paradigms to model the underlying structure of datasets using graphs: 1) constructing a
 \textit{feature graph}, where nodes represent features and samples are graph
 signals, or 2) a \textit{data graph}, where nodes represent samples and graph
 signals are functions of data. In the first case the data is transformed using
@@ -166,10 +168,10 @@ depend on their interests.
 	\item Graph signal transforms \cite{szlam,gavish,Maggioni_biorthogonal,coifman_diffusion_2006,lafon_coarse,narang_lifting_graphs}
 	\item Graph filter identification \cite{thanou_TSP_2014}
 	\item Graph construction and graph topology inference \cite{kalofolias2016learn,Dong:2014tj}
-	\item Prediction and learning in graphs
+%	\item Prediction and learning in graphs
 	\item Statistical graph signal processing \cite{perraudin2016stationary,zhang2015graph,gadde2015probabilistic}
-	\item Signals in high-order graphs
-	\item Non-linear graph signal processing
+%	\item Signals in high-order graphs
+%	\item Non-linear graph signal processing
 	\item Graph-based image and video processing \cite{elmoataz2008nonlocal,lezoray2008nonlocal,shahid2015fast}
 	\item Applications to neuroscience and other medical fields \cite{huang2015graph,hu2015spectral}
 	\item Applications to economics and social networks
@@ -178,7 +180,7 @@ depend on their interests.
 	% Added by Michaël
 	\item Learning graph embeddings \cite{von2008consistency,zhou2006learning,belkin2003laplacian}
 	\item Machine Learning with Graph regularization \cite{smola,belkin2005towards,zhou2004regularization,zhou2005learning,belkin2006manifold}
-	\item Extracting features from graph signals
+%	\item Extracting features from graph signals
 	% Added by Nathanael
 	\item Graph coarsening, multi-scale graph signal processing \cite{spielman2011graph,shuman2016multiscale,liu_coarsening,lafon_coarse,jansen}
 	\item Graph spectral theory \cite{chung1997spectral,belkin2007convergence,shuman2015vertex,sandryhaila2014discrete,Nakatsukasa2013mysteries,brooks,dekel}
