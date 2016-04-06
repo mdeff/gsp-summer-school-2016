@@ -1,0 +1,63 @@
+2016-03-23 Proposal CIRM: points à discuter
+-------------------------------------------
+
+* Définir le format désiré (conférence plénière, conférence courte, tutoriaux,
+  un mix cela, avec on sans proceedings)
+* Comité scientifique trop centré EPFL. Définir le comité d’organisation et le
+  comité scientifique (J’ai l’impression qu’il y a que des gens de l’EFPL plus
+  Yannick, est-ce que c’est un problème) Contacter comité GSP2016 + Mauro.
+* Problème: on a pas de participants ou conférenciers confirmé
+* Proposal GSP2016: motivation scientifique pour les graphes
+* Dates: non-officielles pour été 2017, pas obligé de faire en été?
+* Proposal: montrer la continuité GSP2016
+* Budget: autres recettes que les inscriptions ?
+
+2016-03-24 Discussions
+----------------------
+
+* Pierre m'envoies 3 PDFs de demande de grants.
+* Benjamin connaît des gens (Bruno Torrésani) proches du CIRM. Ils pourraient
+  servir au comité scientifique. Envoyer le draft du proposal à Benjamin qui
+  prendra contact avec eux et me rendra réponse s'ils sont intéressés.
+* Benjamin peut relire le proposal.
+* Possibilité de le faire à Peyresq (www.peiresc.org) sinon. Benjamin a écrit à
+  Borgnat pour savoir s'ils avaient déjà un thème pour 2017. Sinon on peut
+  proposer les graphes.
+
+2016-03-30 À discuter
+---------------------
+
+* Extended deadline: relancer Pascal ?
+* On reste sur le CIRM 2018 ? Probablement pas possible pour 2017...
+* Propositions Bruno: Carry le Rouet, IGESA Porquerolles
+
+Réponse Yannick
+* 3 personnes au comité d'organisation. Extérieure à l'EPFL ?
+	* Ce serait une bonne chose si Clothilde accepte (sinon on n'est que des
+	  hommes de l'EPFL). Tu nous transmets ses coordonnées ?
+	* Elle travaille pas dans les graphes. Travail à distance...
+	* Gilles Puy ? Nath peut lui demander.
+	  Conseils et revues à distance.
+	* Dorina ? Rosie ?
+* Contacter les speakers.
+
+Candidature
+* Titre français / anglais
+	* Key Insights on Networks and Graphs: mais plus de Networks
+	* Key Insights on Networks and Graph Signals: on garde KINGS
+	* Graph Signal Processing Summer School (GSPSS)
+	  École d'été en Traitement du Signal sur Graphe
+* Nombre de participants.
+	* Proposal: plus sympa si on n'est pas trop de participants
+	* 40 semble raisonnable
+* 3 dates
+	1. Après les cours: 11 au 15 juin
+	2. Inter-semestre: 5-9 (ou 29-2) février
+	3. Ou 6-10 novembre 2017 ?
+	*  Avant la rentré: 3-7 (ou 10-14) septembre
+
+Proposal
+* Groupes: Alejandro Ribero
+* 4-5 speakers, un jour chacun
+* une sortie sur la semaine
+* Budget: 1 source externe, e.g. ONR ?
