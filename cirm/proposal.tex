@@ -84,6 +84,7 @@ to incorporate external information into data models, such as hyperlinks or
 references between documents, and to capture the underlying geometrically
 complex manifold structure of the data.
 
+\paragraph{Graphs and Signal Processing.}
 % Graphs
 Graphs are generic data representation forms that are useful for describing the
 geometric structures of data domains in numerous applications, including social,
@@ -111,30 +112,31 @@ of datasets.
 
 % summer school on both applications and theoretical advancements
 
+\paragraph{Graphs as data models.}
 % Feature vs data graph
-There exist two paradigms to model the underlying structure of datasets using graphs: 1) constructing a
-\textit{feature graph}, where nodes represent features (e.g. image features extracted from patches in a picture) and samples are graph
-signals, or 2) a \textit{data graph}, where nodes represent samples (e.g. weather data in a sensor network) and graph
-signals are functions of the data. In the first case the data is transformed using
-GSP tools. An example of this is non-local denoising of an image. Inpainting is an example of the second cas where graphs are often used to regularize
-classification or regression functions. We then identify two regimes: 1) when
-the graph structure is given by the application, and 2) when the graph has to be
-constructed from features or data.
+There exists two paradigms to model the underlying structure of datasets using
+graphs: 1) constructing a \textit{feature graph}, where nodes represent features
+and samples are graph signals, or 2) a \textit{data graph}, where nodes
+represent samples and graph signals are functions of the data. We then identify
+two regimes: 1) when the graph structure is given by the application, and 2)
+when the graph has to be constructed from features or data. Below we elaborate
+on three of those four combinations.
+
 % math: g(L) to filter, Dirichlet regularization
 % Applications: given feature graph
-\paragraph{Given feature graph.}
 Examples of applications where a feature graph structure is given are found in
 many different engineering and science fields. In transportation networks, we
 may be interested in analyzing epidemiological data describing the spread of
 diseases, census data describing human migration patterns, or logistics data
 describing inventories of trade goods. Other examples include gene expression
 patterns defined on top of gene networks, the congestion level at the nodes of a
-telecommunication network, and patterns of brain activity defined on top of a
-brain network.
+telecommunication network, weather data measured by a network of sensors and
+patterns of brain activity defined on top of a brain network.
+
 % Applications: constructed feature graph
-% Applications: constructed data graph
-% Other examples: graph cuts
-\paragraph{Constructed data graph.}
+% No convincing examples.
+
+% Applications: constructed data graph, e.g. graph cuts
 In statistical learning problems, GSP is a meaningful paradigm even when the
 graph structure is not given by the problem but might be inferred from data.  In
 such cases, the graph is a discrete approximation of a manifold embedded in an
@@ -147,14 +149,14 @@ Graph-based methods are especially popular for the (transductive or inductive)
 semi-supervised learning problem where the objective is to classify unknown data
 with the help of a few labeled samples and a large pool of unlabeled training
 samples.
+
 % Applications: given data graph
-\paragraph{Given data graph.}
 As an example of intrinsic data graph, instead of defining weights as
 similarities between vector representations of documents (from e.g. the
 bag-of-word model), external information might be incorporated by defining
-binary weights as hyperlinks or citations between documents.
+binary weights as hyperlinks or references between documents.
 
-% Theoretical understanding
+\paragraph{Theoretical understanding.}
 Besides particular applications, the summer school will also showcase the
 advancement of the understanding of network data by redesigning traditional
 tools originally conceived to study signals defined on regular domains (such as
@@ -163,7 +165,7 @@ to analyze signals on the more complex graph domain. Examples of topics to be
 showcased in this theoretical track include graph transforms, sampling theorems,
 filter design and uncertainty principles.
 
-% Relevance
+\paragraph{Relevance.}
 The last few years have seen significant progress in the development of theory,
 tools, and applications of GSP. This school is intended to disseminate ideas to
 a broader audience and to exchange ideas and experiences on the future path of
@@ -190,10 +192,12 @@ Pierre Vandergheynst will give a plenary talk on signal and image processing on
 graphs.
 
 % Our summer school
+\paragraph{Selected topics.}
 Please refer to published review papers \cite{shuman_emerging_2013,
 sandryhaila_discrete_2014, coifman_diffusion_2006, ekambaram_circulant_2013} for
 a broad technical overview as well as a discussion of the challenges in GSP.
-Below is a selection of applicable topics with selected (recent) references. The
+Below is a selection of applicable topics with selected (recent) references,
+which we hope help to demonstrate the increasing popularity of GSP. The
 selection of topics to be presented will be discussed with the speakers and will
 depend on their interests.
 \begin{itemize}
@@ -231,23 +235,23 @@ We plan to invite five speakers to give lectures. We expect one of them, the
 first to present on Monday, to introduce the field and give a motivational talk.
 The purpose of this overview talk is to help novice attendants to follow the
 more advanced talks. Speakers are selected such that all of those three
-main tracks and possibly a fourth side-track are covered:
+main tracks and possibly a fourth side track are covered:
 
 \begin{enumerate}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 	\item Track 1: Introduction to GSP
 	\item Track 2: Foundations of GSP
 	\item Track 3: Recent innovation and applications of GSP
-	\item Optimization side-track
+	\item Side track: Optimization
 \end{enumerate} 
 
 As there is a strong optimization community in France which could easily travel
-to CIRM for a talk, we envision to introduce a ''side track`` about
-optimization, which is quite relevant to GSP. We'll discuss with those speakers
-on how to adapt their talks to our audience. We are very enthusiastic about the
-impact this exchange could have. We however won't contact those speakers yet, as
-it may not happen should this proposal be rejected (because the event may then
-be located in another place with different local opportunities).
+to CIRM for a talk, we envision to introduce a side track about optimization,
+which is quite relevant to GSP. We'll discuss with those speakers on how to
+adapt their talks to our audience. We are very enthusiastic about the impact
+this exchange could have. We however won't contact those speakers yet, as it may
+not happen should this proposal be rejected (because the event may then be
+located in another place with different local opportunities).
 
 Below is the list of speakers we contacted to lecture at this school. As we
 don't know yet the date and place of the school, we didn't ask them to confirm
