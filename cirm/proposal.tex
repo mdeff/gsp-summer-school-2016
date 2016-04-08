@@ -43,11 +43,13 @@
 The proposed Summer School aims to provide PhD students and researchers with
 insights on advanced tools and methodologies in Graph Signal Processing (GSP)
 research. The goal is to disseminate state-of-the-art research about signal
-processing on graphs as well as common knowledge about the field.
+processing on graphs as well as discussing and defining new directions both on
+the theoretical developments of the GSP framework and on its applications to
+real science and engineering problems.
 % Two levels
 There will be a set of introductory level lectures for those interested to apply
 GSP tools to their research or problems as well as a set of advanced topics
-geared towards researcher in the field. The exact topics have yet to be
+geared towards researchers in the field. The exact topics have yet to be
 discussed with potential speakers. They will offer a mix of theoretical and
 applied talks.
 
@@ -57,11 +59,12 @@ interactive and stimulating way: each day, after the lectures, the speakers will
 be available for face-to-face discussion with participants who are interested in
 deepening their knowledge of the covered material. Students will have the
 possibility to present their work to let other participants and lecturers know
-their research activity.
+their research activity. There will be free time for students to discuss,
+exchange ideas, brainstorm or engage in debates.
 
 The first edition of this school, previously named \textit{Key Insights on
-Networks and Graphs}\footnote{\url{https://lts2.epfl.ch/summerschool/}}, was
-held in Leukerbad, Switzerland in summer 2015.
+Networks and Graphs}\footnote{\url{https://lts2.epfl.ch/summerschool}}, was
+held in Leukerbad, Switzerland, in summer 2015.
 
 \section{Résumé}
 
@@ -72,13 +75,14 @@ La même chose en français.
 
 % Graphs == avenir du futur
 With the advent of Big Data, an increasing amount of data is becoming available
-and advanced statistical models are developed to extract meaningful informations
-and make informed decisions from those data. Graph Signal Processing (GSP)
-enables the analysis and processing of signals who reside on irregular
-(non-Euclidean) domains, such as infrastructure or social networks. Graphs may
-further be used to incorporate external information into data models, such as
-hyperlinks or citations between documents, and to approximate the data manifold
-by constructing a similarity graph.
+and advanced models are needed to extract meaningful information from data and
+identify relational structures that facilitate different data analysis tasks
+such as recognition or inference. Graph Signal Processing (GSP) enables the
+analysis and processing of signals that reside on irregular (non-Euclidean)
+domains, such as infrastructure or social networks. Graphs may further be used
+to incorporate external information into data models, such as hyperlinks or
+citations between documents, and to capture the underlying geometrically complex
+manifold structure of the data. 
 
 % Graphs
 Graphs are generic data representation forms that are useful for describing the
@@ -104,6 +108,8 @@ include filtering, denoising, inpainting, compressing. An important
 consideration when designing such tools is their computational complexity, which
 can often be improved by spectral relaxations or numerical approximations.
 Efficiency is key to cope with the ever growing size of datasets.
+
+% summer school on both applications and theoretical advancements
 
 % Feature vs data graph
 There exists two paradigms to model the underlying structure of datasets using graphs: 1) constructing a
@@ -154,10 +160,37 @@ signals on the more complex graph domain. Examples of topics to be showcased in
 this theoretical track include graph transforms, sampling theorems, filter
 design and uncertainty principles.
 
-For a broad technical overview as well as a discussion of the challenges of GSP,
-please refer to published review papers \cite{shuman_emerging_2013,
-sandryhaila_discrete_2014, coifman_diffusion_2006, ekambaram_circulant_2013}.
-Below is a list of applicable topics with selected (recent) references. The
+% Relevance
+The last few years have seen significant progress in the development of theory,
+tools, and applications of GSP. This school is intended to disseminate ideas to
+a broader audience and to exchange ideas and experiences on the future path of
+this emerging field. As the interest grows, a summer school has been organized
+in 2015 in Switzerland and a
+workshop\footnote{\url{https://alliance.seas.upenn.edu/~gsp16/wiki}} will take
+place this year in the US. Last year, Pascal Frossard got invited to give a
+plenary talk in the Sampling Theory and Applications (SampTA)
+conference\footnote{\url{https://www.american.edu/cas/mathstat/sampta2015}} as
+well as an overview talk about Multimedia graph-based processing at the
+Conference on Multimedia and Expo
+(ICME)\footnote{\url{http://www.icme2015.ieee-icme.org}}, which shows the
+interest of the multimedia community in GSP.  While mainly focusing on complex
+and dynamical networks, the \textit{Network Science Thematic
+Semester}\footnote{\url{https://project.inria.fr/netspringlyon}}, which
+comprises two workshops and a conference that will take place in May and June
+2016 in Lyon and Marseille, France, features some keynotes and presentations
+from the GSP community, notably with the interventions of Pierre Vandergheynst,
+José M.F. Moura and Alejandro Ribeiro. The IEEE Image, Video, and
+Multidimensional Signal Processing (IVMSP) workshop
+2016\footnote{\url{http://www.ivmsp2016.org}}, focused on image and video
+processing, mentions GSP and manifold modelings in its call for papers while
+Pierre Vandergheynst will give a plenary talk on signal and image processing on
+graphs.
+
+% Our summer school
+Please refer to published review papers \cite{shuman_emerging_2013,
+sandryhaila_discrete_2014, coifman_diffusion_2006, ekambaram_circulant_2013} for
+a broad technical overview as well as a discussion of the challenges of GSP.
+Below is a selection of applicable topics with selected (recent) references. The
 selection of topics to be presented will be discussed with the speakers and will
 depend on their interests.
 \begin{itemize}
@@ -174,6 +207,8 @@ depend on their interests.
 %	\item Signals in high-order graphs
 %	\item Non-linear graph signal processing
 	\item Graph-based image and video processing \cite{elmoataz2008nonlocal,lezoray2008nonlocal,shahid2015fast}
+	\item Graph-based 3D multimedia processing \cite{zhang2014fast,
+		schoenenberger2015graph}
 	\item Applications to neuroscience and other medical fields \cite{huang2015graph,hu2015spectral}
 	\item Applications to economics and social networks
 	% Nath: I do not have any references for this one.
@@ -187,40 +222,13 @@ depend on their interests.
 	\item Graph spectral theory \cite{chung1997spectral,belkin2007convergence,shuman2015vertex,sandryhaila2014discrete,Nakatsukasa2013mysteries,brooks,dekel}
 \end{itemize}
 
-% Relevance
-The last few years have seen significant progress in the development of theory,
-tools, and applications of GSP. This school is intended to disseminate ideas to
-a broader audience and to exchange ideas and experiences on the future path of
-this emerging field.  As the interest grows, a summer school has been organized
-in 2015 in Switzerland and a
-workshop\footnote{\url{https://alliance.seas.upenn.edu/~gsp16/wiki/}} will take
-place this year in the US.  While mainly focused on complex and dynamical
-networks, the \textit{Network Science Thematic
-Semester}\footnote{\url{https://project.inria.fr/netspringlyon/}}, comprised of
-two workshops and a conference that will take place in May and June 2016 in Lyon
-and Marseille, features some keynotes and presentations from the GSP community;
-notably with the interventions of Pierre Vandergheynst, José M.F. Moura and
-Alejandro Ribeiro.  The IEEE Image, Video, and Multidimensional Signal
-Processing (IVMSP) workshop 2016\footnote{\url{http://www.ivmsp2016.org/}},
-focused on image and video processing, mentions GSP and manifold modelings in
-its call for papers while Pierre Vandergheynst will give a plenary talk on
-signal and image processing on graphs.
-
 \section{Speakers}
 
-We will invite five speakers to give lectures. We expect one of them, the first
-to present on Monday, to introduce the field and give a motivational talk. The
-goal is for novice attendants to be able to follow the more advanced talks.
-Speakers are selected such that all of those three non-overlapping tracks are
-covered.
-
-As there is a strong optimization community in France which could easily travel
-to CIRM for a talk, we envision to introduce a ''side track`` about
-optimization, which is quite relevant to GSP. We'll discuss with those speakers
-on how to adapt their talks to our audience. We are very enthusiastic about the
-impact this exchange could have. We however won't contact those speakers yet, as
-it may not happen should this proposal be rejected (because the event may then
-be located in another place with different local opportunities).
+We plan to invite five speakers to give lectures. We expect one of them, the
+first to present on Monday, to introduce the field and give a motivational talk.
+The purpose of this overview talk is to help novice attendants to follow the
+more advanced talks. Speakers are selected such that all of those three
+main tracks are covered:
 
 \begin{enumerate}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
@@ -229,6 +237,14 @@ be located in another place with different local opportunities).
 	\item Innovations and applications of GSP
 	\item Optimization side-track
 \end{enumerate} 
+
+As there is a strong optimization community in France which could easily travel
+to CIRM for a talk, we envision to introduce a ''side track`` about
+optimization, which is quite relevant to GSP. We'll discuss with those speakers
+on how to adapt their talks to our audience. We are very enthusiastic about the
+impact this exchange could have. We however won't contact those speakers yet, as
+it may not happen should this proposal be rejected (because the event may then
+be located in another place with different local opportunities).
 
 Below is the list of speakers we contacted to lecture at this school. As we
 don't know yet the date and place of the school, we didn't asked them to confirm
@@ -301,7 +317,6 @@ the time left to advertise it.
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 	\item \href{http://services.math.duke.edu/~mauro/}
 		{Mauro Maggionni}, Duke University, USA
-		(pre-confirmed)
 		% KING2015
 	\item \href{https://elmoatazbill.users.greyc.fr/}
 		{Abderrahim Elmoataz}, University of Caen Basse Normandie, France
@@ -349,7 +364,7 @@ the time left to advertise it.
 %		{Nelly Pustelnik}, ENS Lyon / CNRS, France
 		% Pascal: elle fait de l'optimization, récemment sur les graphes
 	\end{itemize}
-\item SIDE-TRACK
+\item SIDE TRACK
 	\begin{itemize}
 	\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}
 	\item \href{http://www.di.ens.fr/~fbach/}
@@ -412,7 +427,7 @@ attendees to 40, such that all participants from the two schools can be
 accommodated at CIRM. The lectures from the two events will take place in two
 different auditoriums, namely at CIRM and CPPM\footnote{Confirmed by Yannick
 Boursier.}. While the scientific part will be organized independently, we plan
-to jointly organize the social events (lunch, dinner, trip) during which
+to jointly organize the social events (lunch, dinner, excursion) during which
 students may exchange and eventually develop future collaborations.
 
 \section{Others}
@@ -459,7 +474,7 @@ of the week; it is then up to home institutions to award those credits.
 
 With the idea that nice places can help open the mind, we would be delighted to
 host this event in the beautiful coastal area of Marseille. It would further be
-in contrast to the previous edition which was hosted in Leukerbad, a small swiss
+in contrast to the previous edition which was hosted in Leukerbad, a small Swiss
 town up in a valley in the Alps. As Leukerbad, Marseille is a place which is
 quiet for the mind and relaxing for the body. 
 In addition to its intrinsic attractiveness as a touristic city, Marseille is
@@ -483,6 +498,9 @@ Attendees will be offered the opportunity to present their work. Interested
 students will have to provide an abstract. The scientific committee will choose
 the most relevant ones, which will be allocated a 20 to 30 minutes time slot at
 the end of a day. The participation to these presentations is optional.
+Additionally, we schedule some free time after lunch to discuss and exchange
+ideas about future developments of the field. Each day, we may propose a
+different topic for students to brainstorm or debate about.
 
 Depending on funding opportunities and the enthusiasm of the community, notably
 at GSP2016\footnote{To be held in May 2016 in Pennsylvania.}, this event may
@@ -546,7 +564,7 @@ including breakfast, 15.45€ per meal. We thus budget $61.80 \cdot 5 + 15.45
 If this proposal is accepted, we will request additional funding to local
 communities in the CIRM area\footnote{Coordinated by Bruno Torrésani.} and to
 the Seasonal Schools in Signal Processing (S3P)
-Program\footnote{\url{http://signalprocessingsociety.org/seasonal-schools/}} of
+Program\footnote{\url{http://signalprocessingsociety.org/seasonal-schools}} of
 the IEEE Signal Processing Society (SPS). While there is no call for proposals
 for 2018 yet, the winter 2016-2017 version states that ``an SPS contribution of
 up to 5k US dollars can be included in the budget''.
