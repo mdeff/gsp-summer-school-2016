@@ -112,16 +112,17 @@ of datasets.
 % summer school on both applications and theoretical advancements
 
 % Feature vs data graph
-There exists two paradigms to model the underlying structure of datasets using graphs: 1) constructing a
-\textit{feature graph}, where nodes represent features and samples are graph
-signals, or 2) a \textit{data graph}, where nodes represent samples and graph
+There exist two paradigms to model the underlying structure of datasets using graphs: 1) constructing a
+\textit{feature graph}, where nodes represent features (e.g. image features extracted from patches in a picture) and samples are graph
+signals, or 2) a \textit{data graph}, where nodes represent samples (e.g. weather data in a sensor network) and graph
 signals are functions of the data. In the first case the data is transformed using
-GSP tools, while in the second case graphs are often used to regularize
+GSP tools. An example of this is non-local denoising of an image. Inpainting is an example of the second cas where graphs are often used to regularize
 classification or regression functions. We then identify two regimes: 1) when
 the graph structure is given by the application, and 2) when the graph has to be
 constructed from features or data.
 % math: g(L) to filter, Dirichlet regularization
 % Applications: given feature graph
+\paragraph{Given feature graph.}
 Examples of applications where a feature graph structure is given are found in
 many different engineering and science fields. In transportation networks, we
 may be interested in analyzing epidemiological data describing the spread of
@@ -133,6 +134,7 @@ brain network.
 % Applications: constructed feature graph
 % Applications: constructed data graph
 % Other examples: graph cuts
+\paragraph{Constructed data graph.}
 In statistical learning problems, GSP is a meaningful paradigm even when the
 graph structure is not given by the problem but might be inferred from data.  In
 such cases, the graph is a discrete approximation of a manifold embedded in an
@@ -146,6 +148,7 @@ semi-supervised learning problem where the objective is to classify unknown data
 with the help of a few labeled samples and a large pool of unlabeled training
 samples.
 % Applications: given data graph
+\paragraph{Given data graph.}
 As an example of intrinsic data graph, instead of defining weights as
 similarities between vector representations of documents (from e.g. the
 bag-of-word model), external information might be incorporated by defining
@@ -458,11 +461,7 @@ provide support should it be retained.
 
 \subsection{Gender parity analysis}
 
-To the best of our knowledge, Fan Chung Graham, Ulrike von Luxburg and Jelena
-Kovačević are the only women professors in the field. As for the participants we
-cannot comment on every lab but at EPFL the gender parity is comparable to other
-events in the field with 20 women for 70 men in the labs of Prof. Vandergheynst,
-Prof. Frossard, Prof. Thiran and Prof. Grossglauser.
+As in many  other engineering fields, there is an unfortunate imbalance between the number of men and women in the GSP community. To the best of our knowledge, Fan Chung Graham, Ulrike von Luxburg and Jelena Kovačević are the only women professors in the field. All three rank high in our priority list and we would be honored to have such distinguished speakers at the summer school. As for the participants we expect to be representative of the field. At EPFL the gender distribution is 20 women and 70 men in the labs of Prof. Vandergheynst, Prof. Frossard, Prof. Thiran and Prof. Grossglauser.
 
 \subsection{ECTS credits}
 
