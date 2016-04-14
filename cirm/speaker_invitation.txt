@@ -1,29 +1,24 @@
 Dear xxx,
 
-We plan to organize a summer school on graph signal processing in
-Europe in 2017 or 2018 and would be delighted to welcome you as a
-keynote speaker. The current proposition, waiting for approval, is to
-held it at CIRM in Marseille, France, around April-June 2018. It is
-organized by a group of PhD students from EPFL with a scientific
-committee composed of Mauro Maggioni, Bruno Torrésani and myself. The
-first edition (lts2.epfl.ch/summerschool
-<http://lts2.epfl.ch/summerschool>) was held in 2015 in Switzerland.
+We plan to organize a summer school on graph signal processing in Europe in 2017
+or 2018 and would be delighted to welcome you as a keynote speaker. We are
+submitting a first proposal for the Summer School to be held at CIRM in
+Marseille, France, around April-June 2018. It is organized by a group of PhD
+students from EPFL with a scientific committee composed of Mauro Maggioni, Bruno
+Torrésani and myself. A first edition (lts2.epfl.ch/summerschool) was held in
+2015 in Switzerland.
 
-The idea is for 5 keynote speakers to give 4 lessons of 45 minutes. In
-exchange, you will be offered a single room and meals for the whole
-week at CIRM (or a flat rate if you prefer to self-organize). Travel
-costs will be defrayed, hopefully we'll be able to cover your full
-expenses.
+The tentative proposal is built on a program of lectures from 5 keynote
+speakers, who would each give 4 lessons of 45 minutes. The keynote speakers
+would be offered at least lodging at CIRM and support to cover the travel costs
+(hopefully the full travel costs). Depending on the funding opportunities, we
+may also invite other speakers for shorter talks.
 
-Depending on the funding opportunities and the interest of our
-community, we may invite other peoples for shorter talks. The event
-would then become a mix of a summer school (with keynote speakers) and
-a workshop (with shorter talks).
+We surely understand that you could not give a final response to our invitation,
+as some uncertainty remains in particular about the precise timing of the Summer
+School. Nevertheless, we would appreciate to know if you are a priori
+interested. If this is the case, we will certainly get back to you with more
+details as soon as we hear anything about our proposal.
 
-Of course it's far away and the uncertainty is high, so we don't ask
-you to confirm your attendance yet. If it's accepted and you are
-interested, we'll come back to you in June (once we get a response
-from the CIRM) to discuss further.
-
-Best regards,
-Pascal Frossard, on behalf of the scientific and organizing committees 
+Many thanks. Best regards,
+Pascal Frossard, on behalf of the scientific and organising committees 
