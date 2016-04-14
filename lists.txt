@@ -19,11 +19,23 @@ Places
 
 Funding opportunities
 * EPFL research office
-  http://research-office.epfl.ch/funding
+	* http://research-office.epfl.ch/funding
 * SNSF
-  http://www.snf.ch/en/funding/science-communication/scientific-conferences
+	* http://www.snf.ch/en/funding/science-communication/scientific-conferences
+	* plutôt pour une organisation en Suisse
 * KTI
+	* relations avec PMEs / industrie obligatoires ?
 * Hasler foundation
-  http://www.haslerstiftung.ch/files/webcontent/documents/e/unterstuetzung_von_anlaessen_e.pdf
+	* http://www.haslerstiftung.ch/files/webcontent/documents/e/unterstuetzung_von_anlaessen_e.pdf
+	* simple & sans prise de tête
+	* jusqu'à 10k CHF
+	* soumission d'un dossier 3 mois avant
 * IEEE SPS Seasonal Schools in Signal Processing
-  http://signalprocessingsociety.org/seasonal-schools
+	* http://signalprocessingsociety.org/seasonal-schools
+	* call for proposals
+	* jusqu'à 5k USD
+* EPFL STI deanship
+	* write to Demetri Psaltis (dean) and cc Paul Sunderland (financial manager)
+	* good request with information/justification presented to him
+	* other entities participating financially
+	* should be organized by EPFL, but not necessarily take place at EPFL
