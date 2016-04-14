@@ -1,0 +1,60 @@
+Fait
+* Email de remerciements: Nath, Yann, Johan, Lionel, Pascal, Yannick, Bruno,
+  Mauro, Dorina, Benjamin, Xavier, (Pierre CC)
+* Résumé pour Pierre
+* Invite speakers (best if handled by scientific committee) (before April 15)
+* CIRM: upload and submit
+* Approbation comité scientifique
+* Dernière relecture
+* Résumé en français
+* Financement: FNS, fondation Hasler (Pascal), CTI
+* Reorder topics
+* Gender parity: reformulation, uniquement labs Pierre et Pascal
+* Yann relire théorie
+* Étoffer théorie (suggestion Bruno) (Nath)
+* Topics: ajouter theoretical foundation / convergence results
+* Speakers: Gribonval
+* Scientific content: better organization
+* Mauro format
+* Relecture anglais Yann
+* Email Bruno (même style que Mauro, en français)
+* Travel costs --> defray
+* Dorina relecture
+* Yannick sur le fond
+* Mauro speakers
+* Corrections Nath
+* Pascal budget speakers
+* Committee
+	* Clothilde
+	* Dorina: accepted !
+	* Nelly Pustelnik
+
+Abandonné
+* Dorina theoretical understanding
+* Topics: grouper par track
+* Demander à Pierre s'il est ok de sortir du comité ? non, résumé uniquement
+* Yannick: comment les speakers sont-ils hébergés ? Chambres simples, prix
+* Références Pascal
+* Xavier topics
+* Pierre speakers
+* Benjamin relecture (partie scientifique, topics)
+
+Speakers
+* More from France (EU vs US)
+	* GSP: Elmoataz
+	* Lyon: Flandrin, Borgnat
+	* Optim (sparsity, l1 min): Fadili, Pesquet, Combettes, Bach, Peyré
+	* Wavelets: Mallat
+	* Demander à Pierre: Elmoataz, Pesquet ou Mallat ?
+	* Fifth speaker: convergence to Gribonval (Pascal & Mauro)
+* theory vs applications
+* academia vs industry (FB, Yahoo)
+* Side track relevant to GSP ? e.g. optimisation
+* Budget en correspondance avec les speakers listés
+* Johan: les speakers pourront s'arranger pour avoir un suivi et pas d'overlap
+
+Big question: si on le voit comme Mauro (je suis pour), on invite énormément de
+  speakers pour un "high quality event", et du coup je me demande si 40
+  participants ne sera pas trop peu.
+Solution: soumettre petite école, puis décider en juin (après réponse CIRM et
+  GSP2016) si on agrandit
