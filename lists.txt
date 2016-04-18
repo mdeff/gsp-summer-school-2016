@@ -39,3 +39,4 @@ Funding opportunities
 	* good request with information/justification presented to him
 	* other entities participating financially
 	* should be organized by EPFL, but not necessarily take place at EPFL
+	* normally it’s in the range of 3-5 kCHF
