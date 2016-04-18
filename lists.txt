@@ -40,3 +40,7 @@ Funding opportunities
 	* other entities participating financially
 	* should be organized by EPFL, but not necessarily take place at EPFL
 	* normally it’s in the range of 3-5 kCHF
+* EURASIP
+	* http://www.eurasip.org/index.php?option=com_content&view=article&id=124&Itemid=1129
+	* at least 4 months before event
+	* up to 5k EUR
