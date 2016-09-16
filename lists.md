@@ -1,4 +1,4 @@
-Places
+#Places
 * CIRM
 	* Candidature envoyé au 10 avril 2016
 * IGESA Porquerolles
@@ -25,9 +25,15 @@ Places
 * Monte Verita
 	* Possible de louer sans financement ?
 
-Funding opportunities
+#Funding opportunities
 * EPFL research office
 	* http://research-office.epfl.ch/funding
+* ETH-Board
+	* http://phd.epfl.ch/summer_schools_en
+	* Main target should be Doctoral or Master students of EPFL and ETHZ
+	* Funding for budget not covered by fees
+	* Committee from both EPFL and ETHZ
+	* Funding used for KING2015
 * SNSF
 	* http://www.snf.ch/en/funding/science-communication/scientific-conferences
 	* plutôt pour une organisation en Suisse
@@ -48,8 +54,10 @@ Funding opportunities
 	* other entities participating financially
 	* should be organized by EPFL, but not necessarily take place at EPFL
 	* normally it’s in the range of 3-5 kCHF
+* EPFL Institute ?
 * EURASIP
 	* http://www.eurasip.org/index.php?option=com_content&view=article&id=124&Itemid=1129
 	* at least 4 months before event
 	* up to 5k EUR
 * Valais: ark, ideark, canton
+* CSEM
