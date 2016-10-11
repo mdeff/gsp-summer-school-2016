@@ -44,10 +44,11 @@
 	* simple & sans prise de tête
 	* jusqu'à 10k CHF
 	* soumission d'un dossier 3 mois avant
-* IEEE SPS Seasonal Schools in Signal Processing
+* IEEE SPS: Seasonal Schools in Signal Processing (S3P)
 	* http://signalprocessingsociety.org/seasonal-schools
 	* call for proposals
 	* jusqu'à 5k USD
+	* dates: 2016-11-02 proposal, 2016-12-29 decision
 * EPFL STI deanship
 	* write to Demetri Psaltis (dean) and cc Paul Sunderland (financial manager)
 	* good request with information/justification presented to him
