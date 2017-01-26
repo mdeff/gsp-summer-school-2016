@@ -1,4 +1,4 @@
-#Places
+# Places
 * CIRM
 	* Candidature envoyé au 10 avril 2016
 * IGESA Porquerolles
@@ -25,7 +25,7 @@
 * Monte Verita
 	* Possible de louer sans financement ?
 
-#Funding opportunities
+# Funding opportunities
 * EPFL research office
 	* http://research-office.epfl.ch/funding
 * ETH-Board
@@ -60,5 +60,12 @@
 	* http://www.eurasip.org/index.php?option=com_content&view=article&id=124&Itemid=1129
 	* at least 4 months before event
 	* up to 5k EUR
+* EuroTech
+	* funding summer / winter schools
+	* organized by doctoral candidates from the EuroTech Universities (DTU, TUM, TU/e, EPFL)
+	* 1-2 per university, normally at least 3 out of the 4
+	* 2-7 days program
+	* 2/3 of participants have to be enrolled in EuroTech Universities
+	* submissions are due by February 28th 2017
 * Valais: ark, ideark, canton
 * CSEM
