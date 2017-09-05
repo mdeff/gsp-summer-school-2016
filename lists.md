@@ -52,6 +52,8 @@
 	* call for proposals
 	* jusqu'à 5k USD
 	* dates: 2016-11-02 proposal, 2016-12-29 decision
+	* dates: 2017-11-02 proposal, 2016-12-28 decision
+	* summer schools from April 1st to September 30th
 * EPFL STI deanship
 	* write to Demetri Psaltis (dean) and cc Paul Sunderland (financial manager)
 	* good request with information/justification presented to him
