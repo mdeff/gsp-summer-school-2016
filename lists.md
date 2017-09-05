@@ -30,10 +30,13 @@
 	* http://research-office.epfl.ch/funding
 * ETH-Board
 	* http://phd.epfl.ch/summer_schools_en
+	* http://phd.epfl.ch/creationsummerschool.
 	* Main target should be Doctoral or Master students of EPFL and ETHZ
 	* Funding for budget not covered by fees
 	* Committee from both EPFL and ETHZ
 	* Funding used for KING2015
+	* Submissions by October 16th 2017.
+	* ETH board funds are aimed at sponsoring new winter/summer schools. Proposals for courses that already took place in 2015, 2016 or 2017 will still be considered but priority will be given to new winter/summer schools.
 * SNSF
 	* http://www.snf.ch/en/funding/science-communication/scientific-conferences
 	* plutôt pour une organisation en Suisse
