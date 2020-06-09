@@ -1,4 +1,5 @@
 # Places
+
 * CIRM
 	* Candidature envoyé au 10 avril 2016
 * IGESA Porquerolles
@@ -26,6 +27,7 @@
 	* Possible de louer sans financement ?
 
 # Funding opportunities
+
 * EPFL research office
 	* http://research-office.epfl.ch/funding
 * ETH-Board
